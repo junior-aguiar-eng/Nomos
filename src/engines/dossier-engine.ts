@@ -93,13 +93,17 @@ export class DossierEngine {
           </div>
 
           <div class="notebook-records-list">
-            ${state.resolutions.length === 0 ? `
+            ${
+              state.resolutions.length === 0
+                ? `
               <div style="padding: 2.5rem; text-align: center; color: var(--text-muted); background: var(--surface-glass-card); border-radius: var(--radius-md); border: 1px dashed var(--border-glass);">
                 Nenhum caso prático julgado ainda. Acesse o <strong>Simulador</strong> para tomar suas primeiras decisões e construir seu dossiê!
               </div>
-            ` : state.resolutions.map(r => {
-              const c = PRACTICE_CASES_DATA.find(cs => cs.id === r.caseId);
-              return `
+            `
+                : state.resolutions
+                    .map(r => {
+                      const c = PRACTICE_CASES_DATA.find(cs => cs.id === r.caseId);
+                      return `
                 <div class="notebook-record-card ${r.success ? 'success' : 'failure'}">
                   <div class="record-header">
                     <span class="record-case-title">[${c?.caseNumber || r.caseId}] ${c?.title || 'Caso'}</span>
@@ -109,7 +113,9 @@ export class DossierEngine {
                   <p class="record-feedback">${r.technicalFeedback}</p>
                 </div>
               `;
-            }).join('')}
+                    })
+                    .join('')
+            }
           </div>
         </div>
       </div>

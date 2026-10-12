@@ -130,15 +130,21 @@
 /* ESTADOS DE RETORNO DOGMÁTICO */
 .minerva-hud-avatar.emotion-triumph {
   border-color: var(--accent-success);
-  box-shadow: 0 0 0 1px var(--accent-success), var(--shadow-md);
+  box-shadow:
+    0 0 0 1px var(--accent-success),
+    var(--shadow-md);
 }
 
 .minerva-hud-avatar.emotion-nullity_alarm {
   border-color: var(--accent-danger);
-  box-shadow: 0 0 0 1px var(--accent-danger), var(--shadow-md);
+  box-shadow:
+    0 0 0 1px var(--accent-danger),
+    var(--shadow-md);
 }
 
 .minerva-hud-avatar.emotion-night_vision {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 1px var(--accent-primary), var(--shadow-md);
+  box-shadow:
+    0 0 0 1px var(--accent-primary),
+    var(--shadow-md);
 }

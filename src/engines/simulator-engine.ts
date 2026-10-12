@@ -32,7 +32,7 @@ export class SimulatorEngine {
       this.selectedDecisionId = null;
       this.selectedConceptIds = [];
       this.render();
-      
+
       // Minerva scaneia o novo caso
       const activeCase = this.getActiveCase();
       minervaPet.setEmotion(
@@ -127,9 +127,10 @@ export class SimulatorEngine {
           <div class="decision-stage-section">
             <h3 class="stage-title">1. Escolha a Conduta ou Decisão Administrativa</h3>
             <div class="decision-options-grid">
-              ${activeCase.availableDecisions.map((opt: PracticalDecisionOption) => {
-                const isSelected = this.selectedDecisionId === opt.id;
-                return `
+              ${activeCase.availableDecisions
+                .map((opt: PracticalDecisionOption) => {
+                  const isSelected = this.selectedDecisionId === opt.id;
+                  return `
                   <div class="decision-card-option ${isSelected ? 'selected' : ''}" data-decision-id="${opt.id}">
                     <div class="decision-radio-indicator"></div>
                     <div class="decision-text-content">
@@ -138,7 +139,8 @@ export class SimulatorEngine {
                     </div>
                   </div>
                 `;
-              }).join('')}
+                })
+                .join('')}
             </div>
           </div>
 
@@ -149,14 +151,16 @@ export class SimulatorEngine {
               Selecione de 1 a 3 nós conceituais para fundamentar sua decisão técnica:
             </p>
             <div class="grounding-chips-grid">
-              ${availableConcepts.map(concept => {
-                const isSelected = this.selectedConceptIds.includes(concept.id);
-                return `
+              ${availableConcepts
+                .map(concept => {
+                  const isSelected = this.selectedConceptIds.includes(concept.id);
+                  return `
                   <button class="grounding-concept-chip ${isSelected ? 'selected' : ''}" data-concept-id="${concept.id}">
                     ${isSelected ? '✔' : '+'} ${concept.title}
                   </button>
                 `;
-              }).join('')}
+                })
+                .join('')}
             </div>
           </div>
 
@@ -178,7 +182,12 @@ export class SimulatorEngine {
     this.setupListeners();
   }
 
-  private renderExistingVerdict(res: { success: boolean; verdictTitle: string; technicalFeedback: string; xpEarned: number }): string {
+  private renderExistingVerdict(res: {
+    success: boolean;
+    verdictTitle: string;
+    technicalFeedback: string;
+    xpEarned: number;
+  }): string {
     return `
       <div class="verdict-result-card ${res.success ? 'success' : 'failure'}">
         <div class="verdict-header">
@@ -205,7 +214,9 @@ export class SimulatorEngine {
     this.containerEl.querySelectorAll<HTMLElement>('.decision-card-option').forEach(el => {
       el.addEventListener('click', () => {
         this.selectedDecisionId = el.dataset.decisionId || null;
-        this.containerEl?.querySelectorAll('.decision-card-option').forEach(c => c.classList.remove('selected'));
+        this.containerEl
+          ?.querySelectorAll('.decision-card-option')
+          .forEach(c => c.classList.remove('selected'));
         el.classList.add('selected');
         this.updateSubmitButtonState();
       });
@@ -255,11 +266,15 @@ export class SimulatorEngine {
     if (!rule) return;
 
     // Avalia acerto da fundamentação
-    const hasRequiredConcept = rule.validConceptIds.some(id => this.selectedConceptIds.includes(id));
+    const hasRequiredConcept = rule.validConceptIds.some(id =>
+      this.selectedConceptIds.includes(id)
+    );
     const hasFatalFlaw = rule.fatalFlawConceptIds.some(id => this.selectedConceptIds.includes(id));
 
     const finalSuccess = rule.outcome.success && hasRequiredConcept && !hasFatalFlaw;
-    const finalXp = finalSuccess ? rule.outcome.xpEarned : Math.max(15, Math.floor(rule.outcome.xpEarned * 0.3));
+    const finalXp = finalSuccess
+      ? rule.outcome.xpEarned
+      : Math.max(15, Math.floor(rule.outcome.xpEarned * 0.3));
 
     // Grava no StateManager
     stateManager.recordCaseResolution({

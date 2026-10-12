@@ -118,12 +118,7 @@ export class AtlasGraphEngine {
     const height = viewport.clientHeight || 650;
 
     const colWidth = width / 4;
-    const colCenters = [
-      colWidth * 0.5,
-      colWidth * 1.5,
-      colWidth * 2.5,
-      colWidth * 3.5
-    ];
+    const colCenters = [colWidth * 0.5, colWidth * 1.5, colWidth * 2.5, colWidth * 3.5];
 
     // Mapeamento lógico de qual coluna cada instituto pertence no fluxo estatal
     const columnAssignments: Record<string, number> = {
@@ -163,9 +158,9 @@ export class AtlasGraphEngine {
 
       // Espaçamento vertical perfeitamente calculado
       const verticalPadding = 75;
-      const availableHeight = height - (verticalPadding * 2);
+      const availableHeight = height - verticalPadding * 2;
       const step = availableHeight / Math.max(1, totalInCol - 1);
-      const y = totalInCol === 1 ? height / 2 : verticalPadding + (rowIdx * step);
+      const y = totalInCol === 1 ? height / 2 : verticalPadding + rowIdx * step;
 
       this.positions.set(concept.id, {
         x: colCenters[colIdx],
@@ -228,7 +223,7 @@ export class AtlasGraphEngine {
         this.hoveredConceptId = null;
       });
 
-      nodeEl.addEventListener('click', (e) => {
+      nodeEl.addEventListener('click', e => {
         const target = e.target as HTMLElement;
         if (target.classList.contains('blueprint-bookmark-btn')) {
           e.stopPropagation();
@@ -269,12 +264,16 @@ export class AtlasGraphEngine {
         distinctionsHtml = `
           <div class="drawer-section">
             <h4 class="drawer-section-title">Distinção Dogmática</h4>
-            ${concept.practicalDistinctions.map(d => `
+            ${concept.practicalDistinctions
+              .map(
+                d => `
               <div style="background:var(--bg-secondary);padding:0.65rem 0.85rem;border-radius:var(--radius-xs);margin-bottom:0.35rem;border-left:2px solid var(--accent-primary);">
                 <strong style="color:var(--text-primary);font-size:0.82rem;">${d.versusTitle}</strong>
                 <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.2rem;">${d.difference}</p>
               </div>
-            `).join('')}
+            `
+              )
+              .join('')}
           </div>
         `;
       }
@@ -284,9 +283,13 @@ export class AtlasGraphEngine {
         supremeCourtHtml = `
           <div class="drawer-section">
             <h4 class="drawer-section-title">Enunciados e Teses dos Tribunais</h4>
-            ${concept.supremeCourtTheses.map(t => `
+            ${concept.supremeCourtTheses
+              .map(
+                t => `
               <div class="drawer-theses-card">${t}</div>
-            `).join('')}
+            `
+              )
+              .join('')}
           </div>
         `;
       }
@@ -345,9 +348,10 @@ export class AtlasGraphEngine {
 
   private drawOrthogonalGrid(ctx: CanvasRenderingContext2D, width: number, height: number): void {
     const colWidth = width / 4;
-    ctx.strokeStyle = stateManager.getState().theme === 'crystal-light'
-      ? 'rgba(229, 231, 235, 0.6)'
-      : 'rgba(36, 47, 71, 0.4)';
+    ctx.strokeStyle =
+      stateManager.getState().theme === 'crystal-light'
+        ? 'rgba(229, 231, 235, 0.6)'
+        : 'rgba(36, 47, 71, 0.4)';
     ctx.lineWidth = 1;
 
     // Linhas verticais delimitadoras de raia
@@ -376,7 +380,8 @@ export class AtlasGraphEngine {
         const p2 = this.positions.get(targetId);
         if (!p2) return;
 
-        const isHighlighted = activeTarget && (activeTarget === concept.id || activeTarget === targetId);
+        const isHighlighted =
+          activeTarget && (activeTarget === concept.id || activeTarget === targetId);
 
         // Cores institucionais sóbrias
         let strokeColor = isDark ? 'rgba(79, 99, 147, 0.25)' : 'rgba(203, 213, 225, 0.45)';

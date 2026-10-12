@@ -24,22 +24,22 @@ export interface PracticalAxis {
   coreInstitutes: string[];
 }
 
-export type ConceptCategory = 
-  | 'principio' 
-  | 'poder' 
-  | 'ato' 
-  | 'organizacao' 
+export type ConceptCategory =
+  | 'principio'
+  | 'poder'
+  | 'ato'
+  | 'organizacao'
   | 'agente'
-  | 'policia' 
-  | 'bem' 
-  | 'propriedade' 
+  | 'policia'
+  | 'bem'
+  | 'propriedade'
   | 'responsabilidade'
-  | 'licitacao' 
-  | 'contrato' 
-  | 'servico' 
+  | 'licitacao'
+  | 'contrato'
+  | 'servico'
   | 'regulacao'
-  | 'controle' 
-  | 'remedio' 
+  | 'controle'
+  | 'remedio'
   | 'improbidade';
 
 export interface LegalConcept {
@@ -65,7 +65,15 @@ export interface PracticalDecisionOption {
   id: string;
   label: string;
   actionSummary: string;
-  actionType: 'convalidate' | 'annul' | 'revoke' | 'sanction' | 'maintain' | 'suspend' | 'compensate' | 'dismiss';
+  actionType:
+    | 'convalidate'
+    | 'annul'
+    | 'revoke'
+    | 'sanction'
+    | 'maintain'
+    | 'suspend'
+    | 'compensate'
+    | 'dismiss';
 }
 
 export interface DecisionOutcome {
@@ -99,7 +107,11 @@ export interface PracticalCase {
   difficulty: 'Iniciante' | 'Intermediário' | 'Avançado';
 }
 
-export type PublicRank = 'Estagiário de Direito' | 'Assessor Jurídico' | 'Procurador do Estado' | 'Conselheiro / Magistrado';
+export type PublicRank =
+  | 'Estagiário de Direito'
+  | 'Assessor Jurídico'
+  | 'Procurador do Estado'
+  | 'Conselheiro / Magistrado';
 
 export interface CaseResolutionRecord {
   caseId: string;
@@ -117,7 +129,10 @@ export interface UserProgressState {
   currentUniverse: LegalUniverseId;
   currentRank: PublicRank;
   totalXp: number;
-  axisScores: Record<AxisId, { resolvedCount: number; totalCount: number; accuracyPercentage: number }>;
+  axisScores: Record<
+    AxisId,
+    { resolvedCount: number; totalCount: number; accuracyPercentage: number }
+  >;
   resolutions: CaseResolutionRecord[];
   bookmarkedConceptIds: string[];
   theme: 'crystal-light' | 'deep-cyber-dark';

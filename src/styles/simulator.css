@@ -269,7 +269,7 @@
 }
 
 .decision-card-option.selected .decision-radio-indicator::after {
-  content: "✔";
+  content: '✔';
   color: white;
   font-size: 10px;
 }

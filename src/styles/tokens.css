@@ -22,14 +22,14 @@
   --text-inverse: #ffffff;
 
   /* Cores de Acento Institucional Sóbrio */
-  --accent-primary: #1e3a8a;       /* Azul Marinho Imperial */
+  --accent-primary: #1e3a8a; /* Azul Marinho Imperial */
   --accent-primary-hover: #172554;
-  --accent-secondary: #334155;     /* Slate Corporativo */
-  --accent-success: #065f46;       /* Esmeralda Dogmático */
+  --accent-secondary: #334155; /* Slate Corporativo */
+  --accent-success: #065f46; /* Esmeralda Dogmático */
   --accent-success-light: #f0fdf4;
-  --accent-warning: #92400e;       /* Âmbar Jurídico */
+  --accent-warning: #92400e; /* Âmbar Jurídico */
   --accent-warning-light: #fffbeb;
-  --accent-danger: #991b1b;        /* Carmim Forense */
+  --accent-danger: #991b1b; /* Carmim Forense */
   --accent-danger-light: #fef2f2;
 
   --radius-xs: 2px;
@@ -49,7 +49,7 @@
   --transition-normal: 0.2s ease-in-out;
 }
 
-[data-theme="deep-cyber-dark"] {
+[data-theme='deep-cyber-dark'] {
   /* =========================================================================
      DEEP DARK INSTITUCIONAL
      ========================================================================= */

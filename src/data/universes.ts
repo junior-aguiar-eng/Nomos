@@ -6,7 +6,8 @@ export const UNIVERSES_DATA: LegalUniverse[] = [
     title: 'Direito Administrativo',
     subtitle: 'O Regime Jurídico do Poder Público & Ação Estatal',
     status: 'active',
-    description: 'Compreenda a mecânica pura dos atos, poderes, licitações, contratos e controle da administração.',
+    description:
+      'Compreenda a mecânica pura dos atos, poderes, licitações, contratos e controle da administração.',
     icon: '🏛️'
   },
   {

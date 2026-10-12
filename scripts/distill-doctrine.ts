@@ -40,7 +40,9 @@ PRACTICE_CASES_DATA.forEach(c => {
     rule.validConceptIds.forEach(id => {
       const exists = LEGAL_CONCEPTS_DATA.some(concept => concept.id === id);
       if (!exists) {
-        console.warn(`    ⚠️ Alerta: Conceito ${id} referenciado no caso ${c.id} não foi encontrado.`);
+        console.warn(
+          `    ⚠️ Alerta: Conceito ${id} referenciado no caso ${c.id} não foi encontrado.`
+        );
         brokenLinks++;
       }
     });
@@ -48,7 +50,11 @@ PRACTICE_CASES_DATA.forEach(c => {
 });
 
 if (brokenLinks === 0) {
-  console.log('  ✅ Todos os 100% dos nós conceituais referenciados no Simulador estão íntegros e validados!');
+  console.log(
+    '  ✅ Todos os 100% dos nós conceituais referenciados no Simulador estão íntegros e validados!'
+  );
 }
 
-console.log('\n✨ Destilação concluída com sucesso! Base de dados do NOMOS pronta para produção sem resíduos.\n');
+console.log(
+  '\n✨ Destilação concluída com sucesso! Base de dados do NOMOS pronta para produção sem resíduos.\n'
+);

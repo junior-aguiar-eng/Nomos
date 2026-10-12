@@ -2,7 +2,8 @@
   /* ==========================================
      ESTILOS LIMPOS DE IMPRESSÃO / PDF (A4)
      ========================================== */
-  body, html {
+  body,
+  html {
     background: #ffffff !important;
     color: #000000 !important;
     overflow: visible !important;

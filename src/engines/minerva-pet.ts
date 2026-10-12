@@ -99,7 +99,7 @@ export class MinervaPet {
       }
     });
 
-    this.nightVisionBtnEl?.addEventListener('click', (e) => {
+    this.nightVisionBtnEl?.addEventListener('click', e => {
       e.stopPropagation();
       if (this.onNightVisionCallback) {
         this.onNightVisionCallback();

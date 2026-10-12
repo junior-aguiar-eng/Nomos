@@ -1,102 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" data-theme="crystal-light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NOMOS — Studio Jurídico | Compêndio Dogmático e Aprendizagem Ativa</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="/src/styles/tokens.css">
-  <link rel="stylesheet" href="/src/styles/layout.css">
-  <link rel="stylesheet" href="/src/styles/compendium.css">
-  <link rel="stylesheet" href="/src/styles/atlas.css">
-  <link rel="stylesheet" href="/src/styles/simulator.css">
-  <link rel="stylesheet" href="/src/styles/dossier.css">
-  <link rel="stylesheet" href="/src/styles/minerva.css">
-  <link rel="stylesheet" href="/src/styles/print.css">
-</head>
-<body>
-  <div id="app">
-    <!-- HEADER INSTITUCIONAL SÓBRIO -->
-    <header class="nomos-header">
-      <div class="brand-section">
-        <div class="brand-logo-seal">Ν</div>
-        <div class="brand-info">
-          <div class="brand-title">
-            NOMOS <span class="brand-badge">STUDIO</span>
-          </div>
-          <span class="brand-subtitle">Ecossistema de Razão e Prática Jurídica</span>
-        </div>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOMOS — Studio Jurídico | Compêndio Dogmático e Aprendizagem Ativa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
 
-      <!-- SELETOR DE UNIVERSOS DO DIREITO -->
-      <nav class="universe-selector" aria-label="Ramo do Direito">
-        <button class="universe-btn active" data-universe="administrativo">
-          Direito Administrativo
-        </button>
-        <button class="universe-btn coming-soon" data-universe="constitucional" title="Em desenvolvimento">
-          Constitucional
-        </button>
-        <button class="universe-btn coming-soon" data-universe="penal" title="Em desenvolvimento">
-          Penal
-        </button>
-        <button class="universe-btn coming-soon" data-universe="civil" title="Em desenvolvimento">
-          Civil
-        </button>
-      </nav>
-
-      <!-- NAVEGAÇÃO DOS 4 PILARES INSTITUCIONAIS -->
-      <nav class="view-nav" aria-label="Pilares de Aprendizagem">
-        <button class="view-nav-btn active" data-view="compendium">
-          Compêndio Doutrinário
-        </button>
-        <button class="view-nav-btn" data-view="atlas">
-          Blueprint Sistêmico
-        </button>
-        <button class="view-nav-btn" data-view="simulator">
-          Laboratório de Decisões
-        </button>
-        <button class="view-nav-btn" data-view="dossier">
-          Dossiê & Erros
-        </button>
-      </nav>
-
-      <!-- CARREIRA & CONTROLES -->
-      <div class="user-meta-controls">
-        <div class="rank-pill" id="header-rank-pill" title="Patamar funcional do pesquisador">
-          <div class="rank-details">
-            <span class="rank-title" id="header-rank-title">Estagiário de Direito</span>
-            <span class="rank-xp" id="header-rank-xp">0 XP</span>
+    <link rel="stylesheet" href="/src/styles/tokens.css" />
+    <link rel="stylesheet" href="/src/styles/layout.css" />
+    <link rel="stylesheet" href="/src/styles/compendium.css" />
+    <link rel="stylesheet" href="/src/styles/atlas.css" />
+    <link rel="stylesheet" href="/src/styles/simulator.css" />
+    <link rel="stylesheet" href="/src/styles/dossier.css" />
+    <link rel="stylesheet" href="/src/styles/minerva.css" />
+    <link rel="stylesheet" href="/src/styles/print.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- HEADER INSTITUCIONAL SÓBRIO -->
+      <header class="nomos-header">
+        <div class="brand-section">
+          <div class="brand-logo-seal">Ν</div>
+          <div class="brand-info">
+            <div class="brand-title">NOMOS <span class="brand-badge">STUDIO</span></div>
+            <span class="brand-subtitle">Ecossistema de Razão e Prática Jurídica</span>
           </div>
         </div>
 
-        <button class="action-icon-btn" id="theme-toggle-btn" title="Alternar entre Editorial Light e Deep Dark">
-          🌓
-        </button>
-      </div>
-    </header>
+        <!-- SELETOR DE UNIVERSOS DO DIREITO -->
+        <nav class="universe-selector" aria-label="Ramo do Direito">
+          <button class="universe-btn active" data-universe="administrativo">
+            Direito Administrativo
+          </button>
+          <button
+            class="universe-btn coming-soon"
+            data-universe="constitucional"
+            title="Em desenvolvimento"
+          >
+            Constitucional
+          </button>
+          <button class="universe-btn coming-soon" data-universe="penal" title="Em desenvolvimento">
+            Penal
+          </button>
+          <button class="universe-btn coming-soon" data-universe="civil" title="Em desenvolvimento">
+            Civil
+          </button>
+        </nav>
 
-    <!-- PALCO CENTRAL DA APLICAÇÃO -->
-    <main class="nomos-main-stage">
-      <!-- PILAR 1: COMPÊNDIO DOUTRINÁRIO (SALA DE LEITURA DENSA) -->
-      <section class="view-pane active" id="compendium-view-pane"></section>
+        <!-- NAVEGAÇÃO DOS 4 PILARES INSTITUCIONAIS -->
+        <nav class="view-nav" aria-label="Pilares de Aprendizagem">
+          <button class="view-nav-btn active" data-view="compendium">Compêndio Doutrinário</button>
+          <button class="view-nav-btn" data-view="atlas">Blueprint Sistêmico</button>
+          <button class="view-nav-btn" data-view="simulator">Laboratório de Decisões</button>
+          <button class="view-nav-btn" data-view="dossier">Dossiê & Erros</button>
+        </nav>
 
-      <!-- PILAR 2: BLUEPRINT SISTÊMICO (DIAGRAMA ORTOGONAL EM RAIAS) -->
-      <section class="view-pane" id="atlas-view-pane"></section>
+        <!-- CARREIRA & CONTROLES -->
+        <div class="user-meta-controls">
+          <div class="rank-pill" id="header-rank-pill" title="Patamar funcional do pesquisador">
+            <div class="rank-details">
+              <span class="rank-title" id="header-rank-title">Estagiário de Direito</span>
+              <span class="rank-xp" id="header-rank-xp">0 XP</span>
+            </div>
+          </div>
 
-      <!-- PILAR 3: LABORATÓRIO DE DECISÕES (CASOS CONCRETOS) -->
-      <section class="view-pane" id="simulator-view-pane"></section>
+          <button
+            class="action-icon-btn"
+            id="theme-toggle-btn"
+            title="Alternar entre Editorial Light e Deep Dark"
+          >
+            🌓
+          </button>
+        </div>
+      </header>
 
-      <!-- PILAR 4: DOSSIÊ DE CARREIRA E CADERNO DE ERROS -->
-      <section class="view-pane" id="dossier-view-pane"></section>
-    </main>
+      <!-- PALCO CENTRAL DA APLICAÇÃO -->
+      <main class="nomos-main-stage">
+        <!-- PILAR 1: COMPÊNDIO DOUTRINÁRIO (SALA DE LEITURA DENSA) -->
+        <section class="view-pane active" id="compendium-view-pane"></section>
 
-    <!-- EMBLEMA INSTITUCIONAL MINERVA -->
-    <div id="minerva-host"></div>
-  </div>
+        <!-- PILAR 2: BLUEPRINT SISTÊMICO (DIAGRAMA ORTOGONAL EM RAIAS) -->
+        <section class="view-pane" id="atlas-view-pane"></section>
 
-  <script type="module" src="/src/main.ts"></script>
-</body>
+        <!-- PILAR 3: LABORATÓRIO DE DECISÕES (CASOS CONCRETOS) -->
+        <section class="view-pane" id="simulator-view-pane"></section>
+
+        <!-- PILAR 4: DOSSIÊ DE CARREIRA E CADERNO DE ERROS -->
+        <section class="view-pane" id="dossier-view-pane"></section>
+      </main>
+
+      <!-- EMBLEMA INSTITUCIONAL MINERVA -->
+      <div id="minerva-host"></div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

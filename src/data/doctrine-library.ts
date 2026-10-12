@@ -30,7 +30,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-1',
     title: 'Direito Administrativo e Regime Jurídico-Administrativo',
     subtitle: 'Origens dogmáticas, fontes normativas e o binômio prerrogativas-sujeições',
-    analyticalEmenta: 'A gênese do Estado de Direito e a distinção entre governar e administrar. O regime jurídico-administrativo como sistema fundado sobre dois pilares mestres: a supremacia do interesse público (prerrogativas) e a indisponibilidade do interesse público (sujeições). Princípios constitucionais expressos (art. 37, caput) e princípios implícitos da ordem administrativa.',
+    analyticalEmenta:
+      'A gênese do Estado de Direito e a distinção entre governar e administrar. O regime jurídico-administrativo como sistema fundado sobre dois pilares mestres: a supremacia do interesse público (prerrogativas) e a indisponibilidade do interesse público (sujeições). Princípios constitucionais expressos (art. 37, caput) e princípios implícitos da ordem administrativa.',
     readingTimeMinutes: 25,
     relatedConceptId: 'c-regime-juridico',
     relatedCaseId: 'case-1-1',
@@ -44,7 +45,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
           'Em nosso regime federativo constitucional, a separação dos Poderes (art. 2º da CF) opera sob a lógica da preponderância e não da exclusividade estrita. Cada Poder exerce funções típicas e funções atípicas expressamente autorizadas pelo texto constitucional.',
           'A função administrativa caracteriza-se pela gestão concreta, direta e imediata dos interesses coletivos sob regime de direito público, atuando de forma subjacente à ordem constitucional e legal.'
         ],
-        statutoryBasis: ['Art. 2º da Constituição Federal', 'Art. 37, caput da Constituição Federal'],
+        statutoryBasis: [
+          'Art. 2º da Constituição Federal',
+          'Art. 37, caput da Constituição Federal'
+        ],
         keyTheses: [
           'A função administrativa é residual em relação à legislação (ius novum) e à jurisdição (coisa julgada formal e material).'
         ]
@@ -84,7 +88,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-1',
     title: 'Poderes e Deveres da Administração Pública',
     subtitle: 'Vinculação, discricionariedade, poder regulamentar e a patologia do abuso de poder',
-    analyticalEmenta: 'Natureza jurídica dos poderes administrativos como poderes-deveres irrenunciáveis. O espectro entre atos vinculados e atos discricionários: mérito administrativo, limites normativos e controle de razoabilidade. Poder hierárquico (delegação e avocação). Poder disciplinar perante vínculos especiais. Teoria do abuso de poder: desvio de finalidade versus excesso de poder.',
+    analyticalEmenta:
+      'Natureza jurídica dos poderes administrativos como poderes-deveres irrenunciáveis. O espectro entre atos vinculados e atos discricionários: mérito administrativo, limites normativos e controle de razoabilidade. Poder hierárquico (delegação e avocação). Poder disciplinar perante vínculos especiais. Teoria do abuso de poder: desvio de finalidade versus excesso de poder.',
     readingTimeMinutes: 20,
     relatedConceptId: 'c-poderes-adm',
     relatedCaseId: 'case-1-2',
@@ -124,7 +129,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-2',
     title: 'Poder de Polícia Administrativa',
     subtitle: 'Conceito positivo, atributos executórios, limites constitucionais e delegação',
-    analyticalEmenta: 'A atividade de contenção e disciplina de direitos individuais em prol da convivência coletiva e da segurança pública. Conceito dogmático nos termos do art. 78 do Código Tributário Nacional. Atributos clássicos: discricionariedade, autoexecutoriedade e coercibilidade. Distinção entre polícia administrativa e polícia judiciária. A controvérsia sobre a delegação a empresas estatais.',
+    analyticalEmenta:
+      'A atividade de contenção e disciplina de direitos individuais em prol da convivência coletiva e da segurança pública. Conceito dogmático nos termos do art. 78 do Código Tributário Nacional. Atributos clássicos: discricionariedade, autoexecutoriedade e coercibilidade. Distinção entre polícia administrativa e polícia judiciária. A controvérsia sobre a delegação a empresas estatais.',
     readingTimeMinutes: 20,
     relatedConceptId: 'c-poder-policia',
     relatedCaseId: 'case-2-1',
@@ -165,7 +171,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-1',
     title: 'Teoria Geral do Ato Administrativo',
     subtitle: 'Elementos constitutivos, atributos, vícios de legalidade, convalidação e extinção',
-    analyticalEmenta: 'A anatomia do ato administrativo unilateral. Os cinco elementos de validade: Competência, Finalidade, Forma, Motivo e Objeto. Os atributos da presunção de legitimidade, autoexecutoriedade, tipicidade e imperatividade. A Teoria dos Motivos Determinantes. O regime das nulidades: vícios sanáveis e insanáveis. Convalidação retroativa (ex tunc), anulação (ex tunc) e revogação (ex nunc).',
+    analyticalEmenta:
+      'A anatomia do ato administrativo unilateral. Os cinco elementos de validade: Competência, Finalidade, Forma, Motivo e Objeto. Os atributos da presunção de legitimidade, autoexecutoriedade, tipicidade e imperatividade. A Teoria dos Motivos Determinantes. O regime das nulidades: vícios sanáveis e insanáveis. Convalidação retroativa (ex tunc), anulação (ex tunc) e revogação (ex nunc).',
     readingTimeMinutes: 30,
     relatedConceptId: 'c-elementos-ato',
     relatedCaseId: 'case-1-1',
@@ -209,7 +216,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-3',
     title: 'Contratos Administrativos',
     subtitle: 'Cláusulas exorbitantes, equilíbrio econômico-financeiro e a teoria da imprevisão',
-    analyticalEmenta: 'A natureza bilateral dos ajustes celebrados pela Administração sob regime de direito público. As cláusulas exorbitantes: modificação unilateral, rescisão unilateral, fiscalização, sanções diretas e ocupação temporária. A intangibilidade constitucional da equação econômico-financeira (art. 37, XXI da CF). Diferenças entre reajuste por índices, repactuação e revisão extraordinária.',
+    analyticalEmenta:
+      'A natureza bilateral dos ajustes celebrados pela Administração sob regime de direito público. As cláusulas exorbitantes: modificação unilateral, rescisão unilateral, fiscalização, sanções diretas e ocupação temporária. A intangibilidade constitucional da equação econômico-financeira (art. 37, XXI da CF). Diferenças entre reajuste por índices, repactuação e revisão extraordinária.',
     readingTimeMinutes: 25,
     relatedConceptId: 'c-contratos-equilibrio',
     relatedCaseId: 'case-3-1',
@@ -242,7 +250,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
           '2. Repactuação: modalidade de reajuste aplicada a serviços contínuos com dedicação exclusiva de mão de obra, decorrente de variação dos custos em convenções coletivas de trabalho.',
           '3. Revisão (Reequilíbrio Extraordinário): fundamenta-se na Teoria da Imprevisão e decorre de fatos imprevisíveis, ou previsíveis de consequências incalculáveis, que desfigurem completamente a equação econômico-financeira do pacto (álea extraordinária, fato do príncipe ou fato da administração).'
         ],
-        statutoryBasis: ['Art. 37, XXI da Constituição Federal', 'Art. 124, II, d da Lei 14.133/2021'],
+        statutoryBasis: [
+          'Art. 37, XXI da Constituição Federal',
+          'Art. 124, II, d da Lei 14.133/2021'
+        ],
         keyTheses: [
           'Fato da Administração: ato ou omissão direta do órgão público contratante que onera ou impede a execução do ajuste específico (ex: atraso na liberação da área desapropriada).'
         ]
@@ -255,7 +266,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-3',
     title: 'Licitações Públicas (Nova Lei 14.133)',
     subtitle: 'Princípios fundamentais, modalidades, critérios de julgamento e contratação direta',
-    analyticalEmenta: 'O regime unificado das licitações sob a égide da Lei 14.133/2021. Princípios norteadores: planejamento, segregação de funções e competitividade. Modalidades vigentes: Pregão, Concorrência, Diálogo Competitivo, Concurso e Leilão. A extinção formal de Tomada de Preços e Convite. Contratação Direta: Inexigibilidade de licitação (inviabilidade de competição) versus Dispensa de licitação (viabilidade da disputa com autorização normativa expressa).',
+    analyticalEmenta:
+      'O regime unificado das licitações sob a égide da Lei 14.133/2021. Princípios norteadores: planejamento, segregação de funções e competitividade. Modalidades vigentes: Pregão, Concorrência, Diálogo Competitivo, Concurso e Leilão. A extinção formal de Tomada de Preços e Convite. Contratação Direta: Inexigibilidade de licitação (inviabilidade de competição) versus Dispensa de licitação (viabilidade da disputa com autorização normativa expressa).',
     readingTimeMinutes: 30,
     relatedConceptId: 'c-licitacoes-principios',
     relatedCaseId: 'case-3-2',
@@ -299,7 +311,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-3',
     title: 'Serviços Públicos e Regime Tarifário',
     subtitle: 'Conceito positivo, princípios setoriais e a distinção entre taxa e tarifa',
-    analyticalEmenta: 'A titularidade estatal na prestação de utilidades aos cidadãos. Princípios do serviço público: continuidade, modicidade tarifária, generalidade e atualidade. Classificação dos serviços públicos: uti singuli versus uti universi. A controvérsia sobre a remuneração: natureza jurídica de taxa (tributo vinculado compulsório) versus tarifa ou preço público (remuneração contratual facultativa). Legalidade da interrupção do serviço por inadimplemento.',
+    analyticalEmenta:
+      'A titularidade estatal na prestação de utilidades aos cidadãos. Princípios do serviço público: continuidade, modicidade tarifária, generalidade e atualidade. Classificação dos serviços públicos: uti singuli versus uti universi. A controvérsia sobre a remuneração: natureza jurídica de taxa (tributo vinculado compulsório) versus tarifa ou preço público (remuneração contratual facultativa). Legalidade da interrupção do serviço por inadimplemento.',
     readingTimeMinutes: 20,
     relatedConceptId: 'c-concessoes-servicos',
     sections: [
@@ -338,7 +351,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-3',
     title: 'Concessões, Permissões e Parcerias Público-Privadas',
     subtitle: 'Modalidades de delegação, equação do parceiro privado e formas de extinção',
-    analyticalEmenta: 'Regime jurídico da concessão comum (Lei 8.987/1995) e das Parcerias Público-Privadas (Lei 11.079/2004: PPP Patrocinada e PPP Administrativa). As formas jurídicas de extinção antecipada da concessão: Encampação (retomada por interesse público com prévia lei e indenização), Caducidade (extinção punitiva por inadimplemento culposo da concessionária), Rescisão e Anulação.',
+    analyticalEmenta:
+      'Regime jurídico da concessão comum (Lei 8.987/1995) e das Parcerias Público-Privadas (Lei 11.079/2004: PPP Patrocinada e PPP Administrativa). As formas jurídicas de extinção antecipada da concessão: Encampação (retomada por interesse público com prévia lei e indenização), Caducidade (extinção punitiva por inadimplemento culposo da concessionária), Rescisão e Anulação.',
     readingTimeMinutes: 25,
     relatedConceptId: 'c-concessoes-servicos',
     sections: [
@@ -364,8 +378,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     number: 9,
     axisId: 'axis-1',
     title: 'Organização Administrativa do Estado',
-    subtitle: 'Centralização, desconcentração, descentralização e o regime da Administração Indireta',
-    analyticalEmenta: 'A estrutura orgânica da Administração Pública brasileira. Centralização versus Descentralização (política e administrativa). Desconcentração como técnica de partição interna de competências em órgãos sem personalidade jurídica. A Administração Pública Indireta: Autarquias, Fundações Públicas, Empresas Públicas e Sociedades de Economia Mista. O Terceiro Setor (OS, OSCIP e parcerias).',
+    subtitle:
+      'Centralização, desconcentração, descentralização e o regime da Administração Indireta',
+    analyticalEmenta:
+      'A estrutura orgânica da Administração Pública brasileira. Centralização versus Descentralização (política e administrativa). Desconcentração como técnica de partição interna de competências em órgãos sem personalidade jurídica. A Administração Pública Indireta: Autarquias, Fundações Públicas, Empresas Públicas e Sociedades de Economia Mista. O Terceiro Setor (OS, OSCIP e parcerias).',
     readingTimeMinutes: 25,
     relatedConceptId: 'c-regime-juridico',
     sections: [
@@ -401,8 +417,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     number: 10,
     axisId: 'axis-2',
     title: 'Responsabilidade Civil do Estado',
-    subtitle: 'Evolução dogmática, Teoria do Risco Administrativo, dano por omissão e ação regressiva',
-    analyticalEmenta: 'Da irresponsabilidade feudal à consagração constitucional da responsabilidade objetiva (art. 37, § 6º da CF). A Teoria do Risco Administrativo e seus três pressupostos inafastáveis: conduta oficial, dano certo e nexo causal direto. Causas excludentes da responsabilidade estatal. A responsabilidade por condutas omissivas: Teoria da Falta do Serviço (faute du service). O direito de regresso contra o agente culpado.',
+    subtitle:
+      'Evolução dogmática, Teoria do Risco Administrativo, dano por omissão e ação regressiva',
+    analyticalEmenta:
+      'Da irresponsabilidade feudal à consagração constitucional da responsabilidade objetiva (art. 37, § 6º da CF). A Teoria do Risco Administrativo e seus três pressupostos inafastáveis: conduta oficial, dano certo e nexo causal direto. Causas excludentes da responsabilidade estatal. A responsabilidade por condutas omissivas: Teoria da Falta do Serviço (faute du service). O direito de regresso contra o agente culpado.',
     readingTimeMinutes: 25,
     relatedConceptId: 'c-responsabilidade-civil',
     relatedCaseId: 'case-2-2',
@@ -444,8 +462,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     number: 11,
     axisId: 'axis-1',
     title: 'Regime Jurídico dos Servidores Públicos',
-    subtitle: 'Classificação dos agentes, investidura, estabilidade constitucional e regime disciplinar',
-    analyticalEmenta: 'A distinção entre agentes políticos, servidores públicos estatutários e empregados públicos celetistas. Concurso público e suas diretrizes constitucionais. A aquisição da estabilidade após 3 anos de efetivo exercício e avaliação de desempenho. Hipóteses constitucionais de perda do cargo público estável. Processo Administrativo Disciplinar (PAD): princípios do devido processo legal, composição da comissão processante e garantias de defesa.',
+    subtitle:
+      'Classificação dos agentes, investidura, estabilidade constitucional e regime disciplinar',
+    analyticalEmenta:
+      'A distinção entre agentes políticos, servidores públicos estatutários e empregados públicos celetistas. Concurso público e suas diretrizes constitucionais. A aquisição da estabilidade após 3 anos de efetivo exercício e avaliação de desempenho. Hipóteses constitucionais de perda do cargo público estável. Processo Administrativo Disciplinar (PAD): princípios do devido processo legal, composição da comissão processante e garantias de defesa.',
     readingTimeMinutes: 30,
     relatedConceptId: 'c-pad-estabilidade',
     relatedCaseId: 'case-1-2',
@@ -488,8 +508,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     number: 12,
     axisId: 'axis-2',
     title: 'Intervenção do Estado na Propriedade Privada',
-    subtitle: 'Modalidades restritivas e supressivas: servidão, requisição, tombamento e limitações',
-    analyticalEmenta: 'A função social da propriedade e as formas de intervenção pública. Intervenções restritivas (que mantêm o domínio nas mãos do particular): servidão administrativa, requisição administrativa em perigo público iminente, ocupação temporária, tombamento de patrimônio histórico-cultural e limitações administrativas gerais. Comparativo de institutos e regime indenizatório.',
+    subtitle:
+      'Modalidades restritivas e supressivas: servidão, requisição, tombamento e limitações',
+    analyticalEmenta:
+      'A função social da propriedade e as formas de intervenção pública. Intervenções restritivas (que mantêm o domínio nas mãos do particular): servidão administrativa, requisição administrativa em perigo público iminente, ocupação temporária, tombamento de patrimônio histórico-cultural e limitações administrativas gerais. Comparativo de institutos e regime indenizatório.',
     readingTimeMinutes: 20,
     relatedConceptId: 'c-propriedade-desapropriacao',
     sections: [
@@ -513,7 +535,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-2',
     title: 'Desapropriação e Soberania Territorial',
     subtitle: 'Fases declaratória e executória, justa indenização, tredestinação e retrocessão',
-    analyticalEmenta: 'Forma originária de aquisição da propriedade pelo Poder Público. Pressupostos: necessidade pública, utilidade pública ou interesse social. O princípio da justa e prévia indenização em dinheiro e as exceções constitucionais de títulos da dívida pública. A fase declaratória por decreto expropriatório e a fase executória. A tredestinação lícita versus tredestinação ilícita e o direito de retrocessão.',
+    analyticalEmenta:
+      'Forma originária de aquisição da propriedade pelo Poder Público. Pressupostos: necessidade pública, utilidade pública ou interesse social. O princípio da justa e prévia indenização em dinheiro e as exceções constitucionais de títulos da dívida pública. A fase declaratória por decreto expropriatório e a fase executória. A tredestinação lícita versus tredestinação ilícita e o direito de retrocessão.',
     readingTimeMinutes: 25,
     relatedConceptId: 'c-propriedade-desapropriacao',
     sections: [
@@ -551,8 +574,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     number: 14,
     axisId: 'axis-3',
     title: 'Atuação do Estado no Domínio Econômico e Regulação',
-    subtitle: 'Monopólio constitucional, exploração direta da atividade econômica e agências reguladoras',
-    analyticalEmenta: 'Os princípios da ordem econômica constitucional (art. 170 da CF). A atuação do Estado como agente normativo e regulador da atividade econômica versus exploração direta em caráter excepcional (art. 173 da CF: relevante interesse coletivo ou imperativo de segurança nacional). O poder normativo técnico das agências reguladoras autárquicas e seus limites perante a lei.',
+    subtitle:
+      'Monopólio constitucional, exploração direta da atividade econômica e agências reguladoras',
+    analyticalEmenta:
+      'Os princípios da ordem econômica constitucional (art. 170 da CF). A atuação do Estado como agente normativo e regulador da atividade econômica versus exploração direta em caráter excepcional (art. 173 da CF: relevante interesse coletivo ou imperativo de segurança nacional). O poder normativo técnico das agências reguladoras autárquicas e seus limites perante a lei.',
     readingTimeMinutes: 20,
     relatedConceptId: 'c-concessoes-servicos',
     sections: [
@@ -565,7 +590,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
           'A exploração direta da atividade econômica pelo Estado é subsidiária e excepcional, permitida apenas quando necessária a imperativos da segurança nacional ou a relevante interesse coletivo (art. 173 da CF), atuando por meio de empresas públicas e sociedades de economia mista que se sujeitam ao regime jurídico próprio das empresas privadas.',
           'Como agente normativo e regulador (art. 174 da CF), o Estado exerce as funções de fiscalização, incentivo e planejamento, operando preponderantemente por meio de Agências Reguladoras de natureza autárquica especial.'
         ],
-        statutoryBasis: ['Arts. 170, 173 e 174 da Constituição Federal', 'Lei 13.848/2019 (Lei Geral das Agências Reguladoras)']
+        statutoryBasis: [
+          'Arts. 170, 173 e 174 da Constituição Federal',
+          'Lei 13.848/2019 (Lei Geral das Agências Reguladoras)'
+        ]
       }
     ]
   },
@@ -574,8 +602,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     number: 15,
     axisId: 'axis-4',
     title: 'Controle da Administração Pública e Improbidade',
-    subtitle: 'Autotutela, controle pelos Tribunais de Contas, remédios constitucionais e a Lei 14.230',
-    analyticalEmenta: 'A fiscalização da atividade administrativa sob a ótica dos Poderes da República. Autotutela e prazo decadencial quinquenal (art. 54 da Lei 9.784/1999). Controle Externo: competências constitucionais dos Tribunais de Contas e limites cautelares. Controle Judicial: Mandado de Segurança, Ação Popular e Ação Civil Pública. O regime da Nova Lei de Improbidade Administrativa (Lei 14.230/2021) e a revogação da modalidade culposa.',
+    subtitle:
+      'Autotutela, controle pelos Tribunais de Contas, remédios constitucionais e a Lei 14.230',
+    analyticalEmenta:
+      'A fiscalização da atividade administrativa sob a ótica dos Poderes da República. Autotutela e prazo decadencial quinquenal (art. 54 da Lei 9.784/1999). Controle Externo: competências constitucionais dos Tribunais de Contas e limites cautelares. Controle Judicial: Mandado de Segurança, Ação Popular e Ação Civil Pública. O regime da Nova Lei de Improbidade Administrativa (Lei 14.230/2021) e a revogação da modalidade culposa.',
     readingTimeMinutes: 30,
     relatedConceptId: 'c-autotutela',
     relatedCaseId: 'case-4-1',
@@ -617,7 +647,8 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
     axisId: 'axis-2',
     title: 'Regime Jurídico dos Bens Públicos',
     subtitle: 'Classificação tripartida, afetação e desafetação, regime protetivo e uso privativo',
-    analyticalEmenta: 'O patrimônio das pessoas jurídicas de direito público. A classificação do Código Civil (art. 99): bens de uso comum do povo, bens de uso especial e bens dominicais. O fenômeno da afetação e desafetação. As prerrogativas de proteção: inalienabilidade dos bens afetados, impenhorabilidade, imprescritibilidade (vedação absoluta de usucapião) e não onerabilidade. O uso privativo de bens públicos por particulares.',
+    analyticalEmenta:
+      'O patrimônio das pessoas jurídicas de direito público. A classificação do Código Civil (art. 99): bens de uso comum do povo, bens de uso especial e bens dominicais. O fenômeno da afetação e desafetação. As prerrogativas de proteção: inalienabilidade dos bens afetados, impenhorabilidade, imprescritibilidade (vedação absoluta de usucapião) e não onerabilidade. O uso privativo de bens públicos por particulares.',
     readingTimeMinutes: 20,
     relatedConceptId: 'c-bens-publicos',
     sections: [
@@ -632,7 +663,10 @@ export const DOCTRINE_LIBRARY_DATA: DoctrineTopic[] = [
           '3. Bens Dominicais: constituem o patrimônio disponível do Estado, desprovidos de afetação pública imediata. São os únicos passíveis de alienação, cumpridos os requisitos de interesse público e licitação.',
           'Regime Protetivo: Os bens públicos em geral são imprescritíveis (impossíveis de usucapião) e impenhoráveis (pagamentos decorrem de precatórios judiciais). Enquanto afetados, são inalienáveis e inoneráveis.'
         ],
-        statutoryBasis: ['Art. 98 a 103 do Código Civil', 'Art. 183, § 3º e 191, parágrafo único da CF/88'],
+        statutoryBasis: [
+          'Art. 98 a 103 do Código Civil',
+          'Art. 183, § 3º e 191, parágrafo único da CF/88'
+        ],
         keyTheses: [
           'Súmula 340/STF: Os bens dominicais, como os demais bens públicos, não podem ser adquiridos por usucapião.',
           'Súmula 619/STJ: A ocupação indevida de bem público configura mera detenção, de natureza precária, insuscetível de retenção ou indenização por benfeitorias.'

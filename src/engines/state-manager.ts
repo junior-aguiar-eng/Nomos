@@ -13,7 +13,10 @@ export class StateManager {
   }
 
   private getDefaultState(): UserProgressState {
-    const initialScores: Record<AxisId, { resolvedCount: number; totalCount: number; accuracyPercentage: number }> = {
+    const initialScores: Record<
+      AxisId,
+      { resolvedCount: number; totalCount: number; accuracyPercentage: number }
+    > = {
       'axis-1': { resolvedCount: 0, totalCount: 2, accuracyPercentage: 0 },
       'axis-2': { resolvedCount: 0, totalCount: 2, accuracyPercentage: 0 },
       'axis-3': { resolvedCount: 0, totalCount: 2, accuracyPercentage: 0 },
@@ -81,7 +84,9 @@ export class StateManager {
 
   public toggleBookmark(conceptId: string): void {
     if (this.state.bookmarkedConceptIds.includes(conceptId)) {
-      this.state.bookmarkedConceptIds = this.state.bookmarkedConceptIds.filter(id => id !== conceptId);
+      this.state.bookmarkedConceptIds = this.state.bookmarkedConceptIds.filter(
+        id => id !== conceptId
+      );
     } else {
       this.state.bookmarkedConceptIds.push(conceptId);
     }
@@ -112,7 +117,8 @@ export class StateManager {
       this.state.axisScores[axis.id] = {
         resolvedCount: axisResolutions.length,
         totalCount: axisCases.length,
-        accuracyPercentage: axisResolutions.length > 0 ? Math.round((successes / axisResolutions.length) * 100) : 0
+        accuracyPercentage:
+          axisResolutions.length > 0 ? Math.round((successes / axisResolutions.length) * 100) : 0
       };
     });
 
@@ -130,7 +136,8 @@ export class StateManager {
     const xp = this.state.totalXp;
     if (xp < 220) return { nextRank: 'Assessor Jurídico', targetXp: 220, remainingXp: 220 - xp };
     if (xp < 550) return { nextRank: 'Procurador do Estado', targetXp: 550, remainingXp: 550 - xp };
-    if (xp < 1000) return { nextRank: 'Conselheiro / Magistrado', targetXp: 1000, remainingXp: 1000 - xp };
+    if (xp < 1000)
+      return { nextRank: 'Conselheiro / Magistrado', targetXp: 1000, remainingXp: 1000 - xp };
     return { nextRank: 'Topo da Carreira', targetXp: 1000, remainingXp: 0 };
   }
 

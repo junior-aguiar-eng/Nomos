@@ -55,9 +55,11 @@ export class CompendiumEngine {
     const filteredTopics = DOCTRINE_LIBRARY_DATA.filter(t => {
       if (!this.searchQuery) return true;
       const q = this.searchQuery.toLowerCase();
-      return t.title.toLowerCase().includes(q) ||
+      return (
+        t.title.toLowerCase().includes(q) ||
         t.subtitle.toLowerCase().includes(q) ||
-        t.analyticalEmenta.toLowerCase().includes(q);
+        t.analyticalEmenta.toLowerCase().includes(q)
+      );
     });
 
     this.containerEl.innerHTML = `
@@ -75,10 +77,11 @@ export class CompendiumEngine {
           </div>
 
           <div class="compendium-topics-list">
-            ${filteredTopics.map((topic, idx) => {
-              const isActive = topic.id === activeTopic.id;
-              const topicAxis = PRACTICAL_AXES.find(a => a.id === topic.axisId);
-              return `
+            ${filteredTopics
+              .map(topic => {
+                const isActive = topic.id === activeTopic.id;
+                const topicAxis = PRACTICAL_AXES.find(a => a.id === topic.axisId);
+                return `
                 <div class="compendium-topic-item ${isActive ? 'active' : ''}" data-topic-id="${topic.id}">
                   <div class="topic-item-header">
                     <span class="topic-number-badge">Tema ${topic.number < 10 ? '0' + topic.number : topic.number}</span>
@@ -88,7 +91,8 @@ export class CompendiumEngine {
                   <div class="topic-axis-tag">${topicAxis?.title || ''}</div>
                 </div>
               `;
-            }).join('')}
+              })
+              .join('')}
           </div>
         </aside>
 
@@ -113,7 +117,9 @@ export class CompendiumEngine {
 
             <!-- SEÇÕES DE ESTUDO DENSO -->
             <div class="treatise-sections-flow">
-              ${activeTopic.sections.map(sec => `
+              ${activeTopic.sections
+                .map(
+                  sec => `
                 <section class="treatise-section-block" id="section-${sec.id}">
                   <h2 class="section-title">
                     <span class="section-number">${sec.number}</span> ${sec.title}
@@ -122,37 +128,55 @@ export class CompendiumEngine {
                     ${sec.content.map(p => `<p class="treatise-paragraph">${p}</p>`).join('')}
                   </div>
 
-                  ${sec.keyTheses && sec.keyTheses.length > 0 ? `
+                  ${
+                    sec.keyTheses && sec.keyTheses.length > 0
+                      ? `
                     <div class="sovereign-theses-box">
                       <div class="theses-box-header">TESES VINCULANTES E ENUNCIADOS DOS TRIBUNAIS</div>
                       ${sec.keyTheses.map(t => `<div class="thesis-item">${t}</div>`).join('')}
                     </div>
-                  ` : ''}
+                  `
+                      : ''
+                  }
 
-                  ${sec.statutoryBasis && sec.statutoryBasis.length > 0 ? `
+                  ${
+                    sec.statutoryBasis && sec.statutoryBasis.length > 0
+                      ? `
                     <div class="statutory-basis-row">
                       <span class="statutory-label">Base Legal Positiva:</span>
                       ${sec.statutoryBasis.map(b => `<span class="statutory-badge">${b}</span>`).join('')}
                     </div>
-                  ` : ''}
+                  `
+                      : ''
+                  }
                 </section>
-              `).join('')}
+              `
+                )
+                .join('')}
             </div>
 
             <!-- PONTES PRÁTICAS E APLICAÇÃO -->
             <footer class="treatise-footer-bridges">
               <div class="bridges-headline">APLICAÇÃO PRÁTICA DO INSTITUTO</div>
               <div class="bridges-buttons-row">
-                ${activeTopic.relatedCaseId ? `
+                ${
+                  activeTopic.relatedCaseId
+                    ? `
                   <button class="bridge-action-btn primary" id="bridge-case-btn" data-case-id="${activeTopic.relatedCaseId}">
                     Simular Caso Prático Correlato
                   </button>
-                ` : ''}
-                ${activeTopic.relatedConceptId ? `
+                `
+                    : ''
+                }
+                ${
+                  activeTopic.relatedConceptId
+                    ? `
                   <button class="bridge-action-btn secondary" id="bridge-concept-btn" data-concept-id="${activeTopic.relatedConceptId}">
                     Examinar no Blueprint Sistêmico
                   </button>
-                ` : ''}
+                `
+                    : ''
+                }
               </div>
             </footer>
           </article>
@@ -179,12 +203,16 @@ export class CompendiumEngine {
     });
 
     // Busca instantânea
-    const searchInput = document.getElementById('compendium-search-input') as HTMLInputElement | null;
-    searchInput?.addEventListener('input', (e) => {
+    const searchInput = document.getElementById(
+      'compendium-search-input'
+    ) as HTMLInputElement | null;
+    searchInput?.addEventListener('input', e => {
       this.searchQuery = (e.target as HTMLInputElement).value;
       this.render();
       // Re-foca o input mantendo o cursor
-      const refreshedInput = document.getElementById('compendium-search-input') as HTMLInputElement | null;
+      const refreshedInput = document.getElementById(
+        'compendium-search-input'
+      ) as HTMLInputElement | null;
       if (refreshedInput) {
         refreshedInput.focus();
         refreshedInput.selectionStart = refreshedInput.selectionEnd = refreshedInput.value.length;

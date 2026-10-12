@@ -6,7 +6,8 @@ export const PRACTICAL_AXES: PracticalAxis[] = [
     number: 1,
     title: 'Gestão e Decisão Interna',
     subtitle: 'Poderes, Teoria do Ato, Organização e Servidores',
-    description: 'A anatomia do ato estatal, poderes vinculados e discricionários, competências e o regime dos agentes públicos.',
+    description:
+      'A anatomia do ato estatal, poderes vinculados e discricionários, competências e o regime dos agentes públicos.',
     icon: '⚙️',
     badge: 'Núcleo Decisório',
     color: '#2563eb',
@@ -26,7 +27,8 @@ export const PRACTICAL_AXES: PracticalAxis[] = [
     number: 2,
     title: 'Relação com o Cidadão',
     subtitle: 'Polícia, Bens Públicos, Propriedade e Responsabilidade',
-    description: 'Os limites da autoridade estatal em face dos particulares, intervenção no domínio privado e reparação de danos públicos.',
+    description:
+      'Os limites da autoridade estatal em face dos particulares, intervenção no domínio privado e reparação de danos públicos.',
     icon: '🛡️',
     badge: 'Garantias & Impacto',
     color: '#059669',
@@ -46,7 +48,8 @@ export const PRACTICAL_AXES: PracticalAxis[] = [
     number: 3,
     title: 'Relação com o Mercado',
     subtitle: 'Licitações Lei 14.133, Contratos, Concessões e Regulação',
-    description: 'O Estado comprador, contratante e regulador da economia. Contratações diretas, equilíbrio financeiro e parcerias.',
+    description:
+      'O Estado comprador, contratante e regulador da economia. Contratações diretas, equilíbrio financeiro e parcerias.',
     icon: '📈',
     badge: 'Contratações & Fomento',
     color: '#d97706',
@@ -66,7 +69,8 @@ export const PRACTICAL_AXES: PracticalAxis[] = [
     number: 4,
     title: 'Julgamento e Controle',
     subtitle: 'Autotutela, Tribunais de Contas, Ações e Improbidade',
-    description: 'A fiscalização da legalidade, atuação do controle externo, remédios constitucionais e o regime restritivo de improbidade.',
+    description:
+      'A fiscalização da legalidade, atuação do controle externo, remédios constitucionais e o regime restritivo de improbidade.',
     icon: '⚖️',
     badge: 'Fiscalização & Legalidade',
     color: '#7c3aed',
