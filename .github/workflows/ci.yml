@@ -22,8 +22,10 @@ jobs:
           node-version: 22
           cache: 'npm'
 
-      - name: Instalar Dependências
-        run: npm ci
+      - name: Instalar Dependências (Client e Server)
+        run: |
+          npm --prefix client ci
+          npm --prefix server ci
 
       - name: Validação de Formatação (Prettier)
         run: npm run format:check
@@ -31,5 +33,8 @@ jobs:
       - name: Análise Estática de Código (ESLint 9)
         run: npm run lint
 
-      - name: Tipagem TypeScript & Build de Produção (Vite)
+      - name: Tipagem TypeScript & Build de Produção (Client e Server)
         run: npm run build
+
+      - name: Auditoria e Integridade Dogmática
+        run: npm run distill

@@ -4,6 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "dev": "npm run client:dev",
+    "build": "npm run client:build && npm run server:build",
+    "lint": "npm --prefix client run lint",
+    "format": "npm --prefix client run format",
+    "format:check": "npm --prefix client run format:check",
+    "distill": "npx --prefix client tsx scripts/distill-doctrine.ts",
     "docker:up": "docker compose up --build",
     "docker:down": "docker compose down",
     "docker:seed": "docker compose exec api npm run seed",

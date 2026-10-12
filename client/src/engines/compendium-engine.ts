@@ -59,7 +59,8 @@ export class CompendiumEngine {
       }
     } catch (err) {
       console.error('[CompendiumEngine] Erro ao buscar temas da API:', err);
-      this.errorMessage = 'Não foi possível conectar à API de Doutrina. Verifique se o servidor backend está ativo.';
+      this.errorMessage =
+        'Não foi possível conectar à API de Doutrina. Verifique se o servidor backend está ativo.';
       this.render();
     } finally {
       this.isLoadingList = false;

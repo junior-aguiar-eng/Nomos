@@ -8,7 +8,10 @@ export async function fetchDisciplinas() {
   return res.json();
 }
 
-export async function fetchTemas(slug: string = 'direito-administrativo', searchQuery: string = '') {
+export async function fetchTemas(
+  slug: string = 'direito-administrativo',
+  searchQuery: string = ''
+) {
   const url = searchQuery.trim()
     ? `${API_URL}/api/disciplinas/${slug}/temas?q=${encodeURIComponent(searchQuery.trim())}`
     : `${API_URL}/api/disciplinas/${slug}/temas`;

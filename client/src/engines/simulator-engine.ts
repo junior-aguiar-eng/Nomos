@@ -109,13 +109,14 @@ export class SimulatorEngine {
             <span class="text-xs font-mono text-slate-400">${this.cases.length} casos</span>
           </div>
           <div class="simulator-cases-list flex-1 overflow-y-auto">
-            ${this.cases.map((c, idx) => {
-              const res = state.resolutions.find(r => r.caseId === c.id);
-              let statusClass = '';
-              if (res) statusClass = res.success ? 'resolved-success' : 'resolved-failure';
-              const isActive = idx === this.activeCaseIndex;
+            ${this.cases
+              .map((c, idx) => {
+                const res = state.resolutions.find(r => r.caseId === c.id);
+                let statusClass = '';
+                if (res) statusClass = res.success ? 'resolved-success' : 'resolved-failure';
+                const isActive = idx === this.activeCaseIndex;
 
-              return `
+                return `
                 <div class="case-sidebar-item group relative p-3.5 border-b border-slate-100 transition-colors cursor-pointer hover:bg-slate-100/70 ${isActive ? 'active bg-white border-l-3 border-l-blue-900 shadow-xs' : ''} ${statusClass}" data-case-id="${c.id}">
                   <div class="case-item-meta flex items-center justify-between text-xs">
                     <span class="case-item-number font-mono text-[11px] font-semibold text-slate-500 uppercase tracking-wide">${c.caseNumber}</span>
@@ -133,7 +134,8 @@ export class SimulatorEngine {
                   </div>
                 </div>
               `;
-            }).join('')}
+              })
+              .join('')}
           </div>
         </aside>
 
