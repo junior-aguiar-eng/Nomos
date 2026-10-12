@@ -1,0 +1,272 @@
+/* =========================================================================
+   DOSSIÊ DE CARREIRA & CADERNO DE ERROS — ESTILO EDITORIAL SÓBRIO
+   ========================================================================= */
+.dossier-view-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 2.5rem 3.5rem;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* HERO DA CARREIRA */
+.dossier-hero-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-rank-info {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.hero-rank-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-xs);
+  background: var(--accent-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.hero-rank-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hero-rank-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.hero-rank-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.hero-xp-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 220px;
+}
+
+.xp-numbers-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+}
+
+.xp-current {
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.xp-next {
+  color: var(--text-muted);
+}
+
+.xp-progress-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-xs);
+  background: var(--bg-tertiary);
+  overflow: hidden;
+}
+
+.xp-progress-fill {
+  height: 100%;
+  background: var(--accent-primary);
+  transition: width var(--transition-normal);
+}
+
+/* CARDS DE DOMÍNIO POR EIXO */
+.axis-mastery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.axis-mastery-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.axis-mastery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.axis-mastery-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.axis-mastery-pct {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+}
+
+.axis-mastery-bar {
+  width: 100%;
+  height: 4px;
+  border-radius: var(--radius-xs);
+  background: var(--bg-tertiary);
+  overflow: hidden;
+}
+
+.axis-mastery-fill {
+  height: 100%;
+  background: var(--accent-primary);
+}
+
+/* CADERNO DE ERROS */
+.dossier-notebook-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notebook-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+}
+
+.notebook-section-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.notebook-export-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.export-btn {
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-card);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.export-btn:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--border-hover);
+}
+
+.export-btn.primary {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+.export-btn.primary:hover {
+  background: var(--accent-primary-hover);
+}
+
+/* REGISTROS DO CADERNO */
+.notebook-records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.notebook-record-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.notebook-record-card.failure {
+  border-left: 3px solid var(--accent-danger);
+}
+
+.notebook-record-card.success {
+  border-left: 3px solid var(--accent-success);
+}
+
+.record-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.record-case-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.record-date {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.record-verdict {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.notebook-record-card.failure .record-verdict {
+  color: var(--accent-danger);
+}
+
+.notebook-record-card.success .record-verdict {
+  color: var(--accent-success);
+}
+
+.record-feedback {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}

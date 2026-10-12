@@ -1,0 +1,144 @@
+/* =========================================================================
+   MINERVA — EMBLEMA INSTITUCIONAL CLÁSSICO-MODERNISTA (CONSULTORIA DOGMÁTICA)
+   ========================================================================= */
+.minerva-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 90;
+  pointer-events: none;
+}
+
+/* PAINEL DE CONSULTA DOGMÁTICA */
+.minerva-bubble {
+  max-width: 340px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 0.65rem;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.minerva-bubble.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.minerva-bubble-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.35rem;
+}
+
+.minerva-name-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.minerva-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-success);
+}
+
+.minerva-bubble-text {
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.minerva-bubble-subtext {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.minerva-night-vision-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  padding: 0.3rem 0.65rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.minerva-night-vision-btn:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--border-hover);
+}
+
+/* O EMBLEMA VETORIAL INSTITUCIONAL */
+.minerva-hud-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all var(--transition-fast);
+}
+
+.minerva-hud-avatar:hover {
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.minerva-svg {
+  width: 42px;
+  height: 42px;
+}
+
+.minerva-pupil {
+  transition: transform 0.08s ease-out;
+}
+
+/* ESTADOS DE RETORNO DOGMÁTICO */
+.minerva-hud-avatar.emotion-triumph {
+  border-color: var(--accent-success);
+  box-shadow: 0 0 0 1px var(--accent-success), var(--shadow-md);
+}
+
+.minerva-hud-avatar.emotion-nullity_alarm {
+  border-color: var(--accent-danger);
+  box-shadow: 0 0 0 1px var(--accent-danger), var(--shadow-md);
+}
+
+.minerva-hud-avatar.emotion-night_vision {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 1px var(--accent-primary), var(--shadow-md);
+}

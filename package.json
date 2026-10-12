@@ -1,0 +1,17 @@
+{
+  "name": "nomos-studio-juridico",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "distill": "tsx scripts/distill-doctrine.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "tsx": "^4.19.0"
+  }
+}

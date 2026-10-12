@@ -1,0 +1,428 @@
+/* =========================================================================
+   LABORATÓRIO DE DECISÕES — TRIBUNAL ADMINISTRATIVO SÓBRIO
+   ========================================================================= */
+.simulator-view-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+/* SIDEBAR DE PROCESSOS */
+.simulator-sidebar {
+  width: 320px;
+  min-width: 320px;
+  height: 100%;
+  background: var(--surface-sidebar);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.simulator-sidebar-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.simulator-sidebar-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.simulator-cases-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case-sidebar-item {
+  padding: 0.85rem 1rem;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.case-sidebar-item:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-card-hover);
+}
+
+.case-sidebar-item.active {
+  border-color: var(--accent-primary);
+  border-left: 3px solid var(--accent-primary);
+  background: var(--surface-card-active);
+}
+
+.case-sidebar-item.resolved-success {
+  border-left: 3px solid var(--accent-success);
+}
+
+.case-sidebar-item.resolved-failure {
+  border-left: 3px solid var(--accent-danger);
+}
+
+.case-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.case-item-number {
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.case-item-difficulty {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-xs);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.case-item-title {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+/* ÁREA DE TRABALHO DO PROCESSO */
+.simulator-workspace {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 2.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* AUTUAÇÃO DO PROCESSO */
+.case-dossier-header {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.case-role-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.case-role-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  letter-spacing: 0.03em;
+}
+
+.case-context-tag {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.case-dossier-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+/* RELATÓRIO CIRCUNSTANCIADO DOS FATOS */
+.case-briefing-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.briefing-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.briefing-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: justify;
+}
+
+.legal-problem-box {
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.legal-problem-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-primary);
+}
+
+.legal-problem-desc {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+/* FASE 1: OPÇÕES DE CONDUTA */
+.decision-stage-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.stage-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+
+.decision-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.decision-card-option {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.decision-card-option:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-card-hover);
+}
+
+.decision-card-option.selected {
+  border-color: var(--accent-primary);
+  border-left: 3px solid var(--accent-primary);
+  background: var(--surface-card-active);
+}
+
+.decision-radio-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-strong);
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.decision-card-option.selected .decision-radio-indicator {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary);
+}
+
+.decision-card-option.selected .decision-radio-indicator::after {
+  content: "✔";
+  color: white;
+  font-size: 10px;
+}
+
+.decision-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.decision-option-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.decision-option-summary {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* FASE 2: FUNDAMENTAÇÃO COM O BLUEPRINT */
+.grounding-stage-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.grounding-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.grounding-concept-chip {
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-card);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.grounding-concept-chip:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.grounding-concept-chip.selected {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+  font-weight: 600;
+}
+
+/* BOTÃO DE SUBMISSÃO */
+.simulator-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.submit-verdict-btn {
+  padding: 0.75rem 1.75rem;
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-sm);
+  background: var(--accent-primary);
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.submit-verdict-btn:hover {
+  background: var(--accent-primary-hover);
+}
+
+.submit-verdict-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* VEREDITO FINAL */
+.verdict-result-card {
+  border-radius: var(--radius-sm);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.verdict-result-card.success {
+  background: var(--surface-card);
+  border: 1px solid var(--accent-success);
+  border-left: 4px solid var(--accent-success);
+}
+
+.verdict-result-card.failure {
+  background: var(--surface-card);
+  border: 1px solid var(--accent-danger);
+  border-left: 4px solid var(--accent-danger);
+}
+
+.verdict-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.verdict-status-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.verdict-result-card.success .verdict-status-title {
+  color: var(--accent-success);
+}
+
+.verdict-result-card.failure .verdict-status-title {
+  color: var(--accent-danger);
+}
+
+.verdict-xp-badge {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-xs);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-primary);
+}
+
+.verdict-feedback-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.verdict-grounding-box {
+  background: var(--bg-secondary);
+  border-left: 2px solid var(--accent-primary);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  padding: 0.65rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
