@@ -3,20 +3,35 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "dev": "npm run client:dev",
-    "build": "npm run client:build && npm run server:build",
+    "dev": "tsx server.ts",
+    "build": "npm --prefix client run build",
+    "start": "tsx server.ts",
     "lint": "npm --prefix client run lint",
     "format": "npm --prefix client run format",
     "format:check": "npm --prefix client run format:check",
-    "distill": "npx --prefix client tsx scripts/distill-doctrine.ts",
-    "docker:up": "docker compose up --build",
-    "docker:down": "docker compose down",
-    "docker:seed": "docker compose exec api npm run seed",
+    "distill": "tsx scripts/distill-doctrine.ts",
     "client:dev": "npm --prefix client run dev",
     "client:build": "npm --prefix client run build",
     "server:dev": "npm --prefix server run dev",
     "server:build": "npm --prefix server run build",
     "server:seed": "npm --prefix server run seed"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "vite": "^6.4.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.13.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
   }
 }

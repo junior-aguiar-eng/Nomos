@@ -1,0 +1,7 @@
+{
+  "name": "NOMOS — Studio Jurídico",
+  "description": "Compêndio Dogmático, Blueprint Sistêmico e Laboratório de Decisões Jurídicas para Direito Administrativo.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
