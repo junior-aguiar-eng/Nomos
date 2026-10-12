@@ -66,11 +66,11 @@ export class DossierEngine {
                   <span class="axis-mastery-name">${axis.icon} Eixo ${axis.number}</span>
                   <span class="axis-mastery-pct">${stats.accuracyPercentage}%</span>
                 </div>
-                <div style="font-size:0.75rem;color:var(--text-muted);">${axis.title}</div>
+                <div class="axis-mastery-desc">${axis.title}</div>
                 <div class="axis-mastery-bar">
                   <div class="axis-mastery-fill" style="width: ${stats.accuracyPercentage}%; background: ${axis.color};"></div>
                 </div>
-                <div style="font-size:0.7rem;color:var(--text-muted);">
+                <div class="axis-mastery-footer">
                   ${stats.resolvedCount} de ${stats.totalCount} casos resolvidos
                 </div>
               </div>

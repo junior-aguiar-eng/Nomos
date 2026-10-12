@@ -1,50 +1,52 @@
 /* =========================================================================
-   COMPÊNDIO DOUTRINÁRIO — SALA DE LEITURA EDITORIAL PRESTIGIOSA
+   COMPÊNDIO DOUTRINÁRIO — SALA DE LEITURA EDITORIAL SAAS
    ========================================================================= */
 .compendium-view-container {
   width: 100%;
   height: 100%;
   display: flex;
-  background: var(--bg-primary);
+  background: var(--bg-app);
   overflow: hidden;
 }
 
-/* SIDEBAR DO COMPÊNDIO */
+/* SIDEBAR DO COMPÊNDIO (MASTER-DETAIL CONTÍNUO) */
 .compendium-sidebar {
-  width: 340px;
-  min-width: 340px;
+  width: 330px;
+  min-width: 330px;
   height: 100%;
-  background: var(--surface-sidebar);
-  border-right: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
 }
 
 .compendium-sidebar-header {
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 1.15rem 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.75rem;
+  background: #ffffff;
 }
 
 .sidebar-headline {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
 }
 
 .sidebar-category-label {
+  font-family: var(--font-sans);
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
 }
 
 .compendium-sidebar-title {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.01em;
@@ -56,51 +58,57 @@
 
 .compendium-search-input {
   width: 100%;
-  padding: 0.55rem 0.85rem;
+  padding: 0.5rem 0.85rem;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
-  background: var(--bg-primary);
+  font-size: 0.8125rem;
+  background: #f8fafc;
   color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid #e2e8f0;
   border-radius: var(--radius-sm);
   outline: none;
-  transition: border-color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .compendium-search-input:focus {
+  background: #ffffff;
   border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.08);
 }
 
+/* LISTA CONTÍNUA DE TEMAS (SEM BORDERITIS / SEM CAIXAS SOLTAS) */
 .compendium-topics-list {
   flex: 1;
   overflow-y: auto;
-  padding: 0.85rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0;
 }
 
 .compendium-topic-item {
-  padding: 0.85rem 1rem;
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  border-left: 3px solid transparent;
+  border-radius: 0;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
 .compendium-topic-item:hover {
-  border-color: var(--border-hover);
-  background: var(--surface-card-hover);
+  background: #f8fafc;
 }
 
 .compendium-topic-item.active {
-  border-color: var(--accent-primary);
+  background: #eff6ff;
   border-left: 3px solid var(--accent-primary);
-  background: var(--surface-card-active);
+  border-bottom-color: rgba(0, 0, 0, 0.04);
 }
 
 .topic-item-header {
@@ -110,26 +118,39 @@
 }
 
 .topic-number-badge {
-  font-size: 0.68rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
+.compendium-topic-item.active .topic-number-badge {
+  color: var(--accent-primary);
+}
+
 .topic-reading-time {
-  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
   color: var(--text-muted);
 }
 
 .topic-item-title {
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
   color: var(--text-primary);
-  line-height: 1.3;
+  line-height: 1.35;
+}
+
+.compendium-topic-item.active .topic-item-title {
+  font-weight: 600;
+  color: var(--accent-primary);
 }
 
 .topic-axis-tag {
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   color: var(--text-muted);
 }
@@ -139,18 +160,18 @@
   flex: 1;
   height: 100%;
   overflow-y: auto;
-  padding: 3rem 4rem 5rem 4rem;
+  padding: 2.5rem 3.5rem 5rem 3.5rem;
   display: flex;
   justify-content: center;
-  background: var(--bg-primary);
+  background: var(--bg-app);
 }
 
 .editorial-treatise-wrapper {
   width: 100%;
-  max-width: 800px;
+  max-width: 820px;
   display: flex;
   flex-direction: column;
-  gap: 2.25rem;
+  gap: 2rem;
 }
 
 /* CABEÇALHO DO TRATADO */
@@ -158,101 +179,107 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1.25rem;
 }
 
 .treatise-meta-bar {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 .treatise-number-tag {
-  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--accent-primary);
 }
 
 .treatise-axis-pill {
-  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
   color: var(--text-muted);
-  padding-left: 0.85rem;
-  border-left: 1px solid var(--border-subtle);
+  padding-left: 0.75rem;
+  border-left: 1px solid #e2e8f0;
 }
 
 .treatise-title {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
 .treatise-subtitle {
-  font-size: 1.05rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
   line-height: 1.55;
   color: var(--text-secondary);
 }
 
 /* EMENTA ANALÍTICA */
 .analytical-ementa-card {
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  border-left: 4px solid var(--accent-primary);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  padding: 1.25rem 1.5rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid var(--accent-primary);
+  border-radius: var(--radius-sm);
+  padding: 1.15rem 1.35rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.45rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .ementa-title-tag {
-  font-size: 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--accent-primary);
 }
 
 .ementa-body-text {
+  font-family: var(--font-serif);
   font-size: 0.95rem;
   line-height: 1.65;
   color: var(--text-secondary);
   font-style: italic;
 }
 
-/* SEÇÕES DO TEXTO CORRIDO */
+/* SEÇÕES DO TEXTO CORRIDO (CORPO DE LEITURA EM SERIFA EDITORIAL) */
 .treatise-sections-flow {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2.25rem;
 }
 
 .treatise-section-block {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .section-title {
-  font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
   display: flex;
   align-items: baseline;
-  gap: 0.6rem;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 0.5rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.45rem;
 }
 
 .section-number {
   font-family: var(--font-sans);
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--accent-primary);
   font-weight: 700;
 }
@@ -260,30 +287,33 @@
 .section-paragraphs {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1.15rem;
 }
 
 .treatise-paragraph {
-  font-size: 1.02rem;
-  line-height: 1.75;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.8;
   color: var(--text-secondary);
-  text-align: justify;
+  text-align: left;
 }
 
 /* CAIXAS SOLENES DE TESES VINCULANTES */
 .sovereign-theses-box {
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: var(--radius-sm);
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  margin: 0.75rem 0;
+  gap: 0.55rem;
+  margin: 0.5rem 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .theses-box-header {
-  font-size: 0.68rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -292,13 +322,13 @@
 
 .thesis-item {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  line-height: 1.55;
+  font-size: 0.8125rem;
+  line-height: 1.5;
   color: var(--text-primary);
-  padding: 0.4rem 0.6rem;
-  background: var(--bg-primary);
+  padding: 0.45rem 0.75rem;
+  background: #f8fafc;
   border-left: 2px solid var(--accent-primary);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
 }
 
 /* BASE LEGAL POSITIVA */
@@ -306,11 +336,12 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   margin-top: 0.25rem;
 }
 
 .statutory-label {
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-muted);
@@ -319,44 +350,46 @@
 .statutory-badge {
   font-size: 0.72rem;
   font-family: var(--font-mono);
-  padding: 0.2rem 0.5rem;
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
+  padding: 0.15rem 0.45rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-xs);
   color: var(--text-secondary);
 }
 
 /* RODAPÉ DE PONTES PRÁTICAS */
 .treatise-footer-bridges {
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 1.75rem;
-  margin-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 .bridges-headline {
-  font-size: 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
 }
 
 .bridges-buttons-row {
   display: flex;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .bridge-action-btn {
-  padding: 0.65rem 1.25rem;
+  padding: 0.55rem 1.15rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-fast);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .bridge-action-btn.primary {
@@ -370,12 +403,61 @@
 }
 
 .bridge-action-btn.secondary {
-  background: var(--surface-card);
+  background: #ffffff;
   color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid #e2e8f0;
 }
 
 .bridge-action-btn.secondary:hover {
   border-color: var(--border-hover);
-  background: var(--surface-card-hover);
+  background: var(--bg-secondary);
+}
+
+/* SUPORTE AO TEMA ESCURO */
+[data-theme='deep-cyber-dark'] .compendium-sidebar {
+  background: var(--surface-sidebar);
+  border-color: var(--border-subtle);
+}
+
+[data-theme='deep-cyber-dark'] .compendium-sidebar-header {
+  background: var(--surface-sidebar);
+  border-color: var(--border-subtle);
+}
+
+[data-theme='deep-cyber-dark'] .compendium-search-input {
+  background: var(--bg-secondary);
+  border-color: var(--border-subtle);
+}
+
+[data-theme='deep-cyber-dark'] .compendium-topic-item {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='deep-cyber-dark'] .compendium-topic-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme='deep-cyber-dark'] .compendium-topic-item.active {
+  background: rgba(59, 130, 246, 0.12);
+  border-left-color: var(--accent-primary);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='deep-cyber-dark'] .treatise-header,
+[data-theme='deep-cyber-dark'] .treatise-axis-pill,
+[data-theme='deep-cyber-dark'] .section-title,
+[data-theme='deep-cyber-dark'] .treatise-footer-bridges {
+  border-color: var(--border-subtle);
+}
+
+[data-theme='deep-cyber-dark'] .analytical-ementa-card,
+[data-theme='deep-cyber-dark'] .sovereign-theses-box,
+[data-theme='deep-cyber-dark'] .bridge-action-btn.secondary,
+[data-theme='deep-cyber-dark'] .statutory-badge {
+  background: var(--surface-card);
+  border-color: var(--border-subtle);
+}
+
+[data-theme='deep-cyber-dark'] .thesis-item {
+  background: var(--bg-secondary);
 }

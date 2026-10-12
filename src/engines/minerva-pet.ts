@@ -3,6 +3,8 @@ export type MinervaEmotion = 'idle' | 'scanning' | 'triumph' | 'nullity_alarm' |
 export class MinervaPet {
   private avatarEl: HTMLElement | null = null;
   private bubbleEl: HTMLElement | null = null;
+  private backdropEl: HTMLElement | null = null;
+  private closeBtnEl: HTMLElement | null = null;
   private bubbleTextEl: HTMLElement | null = null;
   private bubbleSubtextEl: HTMLElement | null = null;
   private nightVisionBtnEl: HTMLElement | null = null;
@@ -22,58 +24,74 @@ export class MinervaPet {
 
     targetContainer.innerHTML = `
       <div class="minerva-container" id="minerva-container">
-        <!-- PAINEL DOGMÁTICO SÓBRIO -->
-        <div class="minerva-bubble" id="minerva-bubble">
-          <div class="minerva-bubble-header">
-            <span class="minerva-name-tag">
+        <!-- BACKDROP DA GAVETA RETRÁTIL -->
+        <div class="minerva-drawer-backdrop" id="minerva-drawer-backdrop"></div>
+
+        <!-- PAINEL RETRÁTIL / GAVETA LATERAL À DIREITA -->
+        <aside class="minerva-drawer" id="minerva-bubble" aria-label="Consultoria Dogmática Minerva">
+          <div class="minerva-drawer-header">
+            <div class="minerva-name-tag">
               <span class="minerva-status-dot"></span> Minerva • Consultoria Dogmática
-            </span>
+            </div>
+            <button class="minerva-close-btn" id="minerva-close-btn" title="Fechar painel" aria-label="Fechar">
+              ✕
+            </button>
           </div>
-          <div class="minerva-bubble-text" id="minerva-bubble-text">
-            Compêndio Doutrinário ativo. Estude as seções com rigor ou consulte o Blueprint Sistêmico para correlacionar os institutos.
+
+          <div class="minerva-drawer-body">
+            <div class="minerva-drawer-emblem-area">
+              <div class="minerva-drawer-seal">
+                <svg class="minerva-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="30,8 70,8 92,30 92,70 70,92 30,92 8,70 8,30" stroke="var(--border-subtle)" stroke-width="2" fill="var(--bg-secondary)"/>
+                  <path d="M50 18C36 18 28 28 28 48C28 68 38 82 50 82C62 82 72 68 72 48C72 28 64 18 50 18Z" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
+                  <polyline points="28,26 20,14 36,20" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
+                  <polyline points="72,26 80,14 64,20" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
+                  <circle cx="39" cy="40" r="10" stroke="var(--accent-secondary)" stroke-width="1.5" fill="var(--bg-primary)"/>
+                  <circle id="minerva-pupil-left" class="minerva-pupil" cx="39" cy="40" r="3.5" fill="var(--accent-primary)"/>
+                  <circle cx="61" cy="40" r="10" stroke="var(--accent-secondary)" stroke-width="1.5" fill="var(--bg-primary)"/>
+                  <circle id="minerva-pupil-right" class="minerva-pupil" cx="61" cy="40" r="3.5" fill="var(--accent-primary)"/>
+                  <polygon points="50,44 46,54 54,54" stroke="var(--accent-primary)" stroke-width="1.5" fill="none"/>
+                  <line x1="36" y1="64" x2="64" y2="64" stroke="var(--accent-secondary)" stroke-width="1.5"/>
+                  <line x1="50" y1="60" x2="50" y2="76" stroke="var(--accent-secondary)" stroke-width="1.5"/>
+                  <line x1="42" y1="76" x2="58" y2="76" stroke="var(--accent-secondary)" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="minerva-drawer-status-label" id="minerva-status-label">
+                Em prontidão para consultoria dogmática
+              </div>
+            </div>
+
+            <div class="minerva-bubble-text" id="minerva-bubble-text">
+              Compêndio Doutrinário ativo. Estude as seções com rigor ou consulte o Blueprint Sistêmico para correlacionar os institutos.
+            </div>
+
+            <div class="minerva-bubble-subtext" id="minerva-bubble-subtext">
+              A Visão Noturna destaca os fundamentos dogmáticos essenciais para o caso sob análise.
+            </div>
+
+            <button class="minerva-night-vision-btn" id="minerva-night-vision-btn">
+              👁️ Ativar Visão Noturna
+            </button>
           </div>
-          <div class="minerva-bubble-subtext" id="minerva-bubble-subtext">
-            A Visão Noturna destaca os fundamentos dogmáticos essenciais para o caso sob análise.
-          </div>
-          <button class="minerva-night-vision-btn" id="minerva-night-vision-btn">
-            Ativar Visão Noturna
-          </button>
-        </div>
+        </aside>
 
-        <!-- EMBLEMA CLÁSSICO-MODERNISTA AUSTERO (SELO GEOMÉTRICO) -->
-        <div class="minerva-hud-avatar emotion-idle" id="minerva-hud-avatar" title="Minerva — Emblema da Razão Jurídica">
-          <svg class="minerva-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Moldura Octogonal Sóbria -->
-            <polygon points="30,8 70,8 92,30 92,70 70,92 30,92 8,70 8,30" stroke="var(--border-subtle)" stroke-width="2" fill="var(--bg-secondary)"/>
-            
-            <!-- Silhueta da Coruja da Sabedoria (Linhas Geométricas Austeras) -->
-            <path d="M50 18C36 18 28 28 28 48C28 68 38 82 50 82C62 82 72 68 72 48C72 28 64 18 50 18Z" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
-            
-            <!-- Penas / Orelhas Angulares -->
-            <polyline points="28,26 20,14 36,20" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
-            <polyline points="72,26 80,14 64,20" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
-
-            <!-- Olhos Clássicos Concêntricos -->
-            <circle cx="39" cy="40" r="10" stroke="var(--accent-secondary)" stroke-width="1.5" fill="var(--bg-primary)"/>
-            <circle id="minerva-pupil-left" class="minerva-pupil" cx="39" cy="40" r="3.5" fill="var(--accent-primary)"/>
-
-            <circle cx="61" cy="40" r="10" stroke="var(--accent-secondary)" stroke-width="1.5" fill="var(--bg-primary)"/>
-            <circle id="minerva-pupil-right" class="minerva-pupil" cx="61" cy="40" r="3.5" fill="var(--accent-primary)"/>
-
-            <!-- Bico Linear Estilizado -->
-            <polygon points="50,44 46,54 54,54" stroke="var(--accent-primary)" stroke-width="1.5" fill="none"/>
-
-            <!-- Glifo Central da Balança da Lei -->
-            <line x1="36" y1="64" x2="64" y2="64" stroke="var(--accent-secondary)" stroke-width="1.5"/>
-            <line x1="50" y1="60" x2="50" y2="76" stroke="var(--accent-secondary)" stroke-width="1.5"/>
-            <line x1="42" y1="76" x2="58" y2="76" stroke="var(--accent-secondary)" stroke-width="1.5"/>
-          </svg>
-        </div>
+        <!-- BOTÃO DISCRETO DE ATIVAÇÃO NO CANTO INFERIOR DIREITO -->
+        <button
+          class="minerva-trigger-btn emotion-idle"
+          id="minerva-hud-avatar"
+          title="Minerva — Consultoria Dogmática"
+          aria-label="Abrir Consultoria Minerva"
+        >
+          <span class="minerva-trigger-icon">🏛️</span>
+          <span class="minerva-trigger-label">Minerva</span>
+        </button>
       </div>
     `;
 
     this.avatarEl = document.getElementById('minerva-hud-avatar');
     this.bubbleEl = document.getElementById('minerva-bubble');
+    this.backdropEl = document.getElementById('minerva-drawer-backdrop');
+    this.closeBtnEl = document.getElementById('minerva-close-btn');
     this.bubbleTextEl = document.getElementById('minerva-bubble-text');
     this.bubbleSubtextEl = document.getElementById('minerva-bubble-subtext');
     this.nightVisionBtnEl = document.getElementById('minerva-night-vision-btn');
@@ -81,7 +99,6 @@ export class MinervaPet {
     this.rightPupilEl = document.getElementById('minerva-pupil-right') as unknown as SVGElement;
 
     this.setupEventListeners();
-    this.showBubbleBriefly(6000);
   }
 
   private setupEventListeners(): void {
@@ -95,6 +112,14 @@ export class MinervaPet {
       } else {
         this.showBubble();
       }
+    });
+
+    this.closeBtnEl?.addEventListener('click', () => {
+      this.hideBubble();
+    });
+
+    this.backdropEl?.addEventListener('click', () => {
+      this.hideBubble();
     });
 
     this.nightVisionBtnEl?.addEventListener('click', e => {
@@ -133,7 +158,7 @@ export class MinervaPet {
     this.currentEmotion = emotion;
 
     if (this.avatarEl) {
-      this.avatarEl.className = `minerva-hud-avatar emotion-${emotion}`;
+      this.avatarEl.className = `minerva-trigger-btn emotion-${emotion}`;
     }
 
     if (this.bubbleTextEl) {
@@ -145,7 +170,17 @@ export class MinervaPet {
       this.bubbleSubtextEl.style.display = subMessage ? 'block' : 'none';
     }
 
-    this.showBubble();
+    const statusLabel = document.getElementById('minerva-status-label');
+    if (statusLabel) {
+      const labels: Record<MinervaEmotion, string> = {
+        idle: 'Em prontidão para consultoria',
+        scanning: 'Analisando institutos dogmáticos...',
+        triumph: 'Solução jurídica validada com precisão!',
+        nullity_alarm: 'Alerta: vício insanável de legalidade detectado!',
+        night_vision: 'Visão Noturna ativa: teses e normas em destaque'
+      };
+      statusLabel.textContent = labels[emotion] || labels.idle;
+    }
 
     if (this.resetTimer) {
       window.clearTimeout(this.resetTimer);
@@ -161,10 +196,12 @@ export class MinervaPet {
 
   public showBubble(): void {
     this.bubbleEl?.classList.add('visible');
+    this.backdropEl?.classList.add('visible');
   }
 
   public hideBubble(): void {
     this.bubbleEl?.classList.remove('visible');
+    this.backdropEl?.classList.remove('visible');
   }
 
   public showBubbleBriefly(durationMs: number = 5000): void {
