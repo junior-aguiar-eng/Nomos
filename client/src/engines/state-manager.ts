@@ -6,6 +6,7 @@ const STORAGE_KEY = 'nomos_studio_state_v1';
 
 export class StateManager {
   private state: UserProgressState;
+  private currentCases: any[] = PRACTICE_CASES_DATA;
   private listeners: Array<(state: UserProgressState) => void> = [];
 
   constructor() {
@@ -110,7 +111,7 @@ export class StateManager {
 
     // Recalcula scores por Eixo
     PRACTICAL_AXES.forEach(axis => {
-      const axisCases = PRACTICE_CASES_DATA.filter(c => c.axisId === axis.id);
+      const axisCases = this.currentCases.filter(c => c.axisId === axis.id);
       const axisResolutions = this.state.resolutions.filter(r => r.axisId === axis.id);
       const successes = axisResolutions.filter(r => r.success).length;
 
@@ -123,6 +124,29 @@ export class StateManager {
     });
 
     this.saveState();
+  }
+
+  public setCases(cases: any[]): void {
+    if (Array.isArray(cases) && cases.length > 0) {
+      this.currentCases = cases;
+      // Atualiza contadores totais nos eixos
+      PRACTICAL_AXES.forEach(axis => {
+        const axisCases = this.currentCases.filter(c => c.axisId === axis.id);
+        const axisResolutions = this.state.resolutions.filter(r => r.axisId === axis.id);
+        const successes = axisResolutions.filter(r => r.success).length;
+
+        if (this.state.axisScores[axis.id]) {
+          this.state.axisScores[axis.id].totalCount = axisCases.length;
+          this.state.axisScores[axis.id].accuracyPercentage =
+            axisResolutions.length > 0 ? Math.round((successes / axisResolutions.length) * 100) : 0;
+        }
+      });
+      this.notifyListeners();
+    }
+  }
+
+  public getCases(): any[] {
+    return this.currentCases;
   }
 
   public calculateRank(xp: number): PublicRank {
@@ -148,7 +172,7 @@ export class StateManager {
     md += `## 1. Sumário Executivo de Desempenho\n`;
     md += `- **Cargo Atual**: ${this.state.currentRank}\n`;
     md += `- **Reputação Doutrinária (XP)**: ${this.state.totalXp} XP\n`;
-    md += `- **Casos Concluídos**: ${this.state.resolutions.length} de ${PRACTICE_CASES_DATA.length}\n\n`;
+    md += `- **Casos Concluídos**: ${this.state.resolutions.length} de ${this.currentCases.length}\n\n`;
 
     md += `## 2. Precisão por Macro-Eixo Prático\n`;
     PRACTICAL_AXES.forEach(axis => {
@@ -163,7 +187,7 @@ export class StateManager {
       md += `*Nenhum vício ou tropeço registrado até o momento. Excelente precisão técnica!*\n\n`;
     } else {
       failures.forEach((f, idx) => {
-        const c = PRACTICE_CASES_DATA.find(cs => cs.id === f.caseId);
+        const c = this.currentCases.find(cs => cs.id === f.caseId);
         md += `### ${idx + 1}. [${c?.caseNumber || f.caseId}] ${c?.title || 'Caso Prático'}\n`;
         md += `- **Papel**: ${c?.assignedRole || 'Público'}\n`;
         md += `- **Veredito**: ${f.verdictTitle}\n`;
@@ -174,7 +198,7 @@ export class StateManager {
     md += `## 4. Casos Solucionados com Rigor Técnico\n`;
     const successes = this.state.resolutions.filter(r => r.success);
     successes.forEach((s, idx) => {
-      const c = PRACTICE_CASES_DATA.find(cs => cs.id === s.caseId);
+      const c = this.currentCases.find(cs => cs.id === s.caseId);
       md += `### ${idx + 1}. [${c?.caseNumber || s.caseId}] ${c?.title || 'Caso Prático'}\n`;
       md += `- **Veredito**: ${s.verdictTitle}\n`;
       md += `- **Síntese Técnica**: ${s.technicalFeedback}\n\n`;

@@ -1,6 +1,5 @@
 import { stateManager } from './state-manager';
 import { PRACTICAL_AXES } from '../data/axes';
-import { PRACTICE_CASES_DATA } from '../data/practice-cases';
 import {
   renderIcon,
   getRankIcon,
@@ -124,7 +123,8 @@ export class DossierEngine {
             `
                 : state.resolutions
                     .map(r => {
-                      const c = PRACTICE_CASES_DATA.find(cs => cs.id === r.caseId);
+                      const cases = stateManager.getCases();
+                      const c = cases.find(cs => cs.id === r.caseId);
                       return `
                 <div class="notebook-record-card bg-white rounded-xl border border-slate-200/80 p-4 shadow-xs flex flex-col gap-2 ${r.success ? 'border-l-4 border-l-emerald-600' : 'border-l-4 border-l-rose-600'}">
                   <div class="record-header flex items-center justify-between">

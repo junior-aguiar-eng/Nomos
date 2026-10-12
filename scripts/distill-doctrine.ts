@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { LEGAL_CONCEPTS_DATA } from '../src/data/legal-concepts';
-import { PRACTICE_CASES_DATA } from '../src/data/practice-cases';
-import { PRACTICAL_AXES } from '../src/data/axes';
+import { LEGAL_CONCEPTS_DATA } from '../client/src/data/legal-concepts';
+import { PRACTICE_CASES_DATA } from '../client/src/data/practice-cases';
+import { PRACTICAL_AXES } from '../client/src/data/axes';
 
 const DOCTRINE_DIR = path.resolve(process.cwd(), 'doutrina_direito_administrativo');
 

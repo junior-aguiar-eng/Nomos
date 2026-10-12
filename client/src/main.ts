@@ -141,12 +141,14 @@ class NomosApp {
     // Feedback técnico solene de Minerva
     if (view === 'compendium') {
       const topic = compendiumEngine.getActiveTopic();
-      minervaPet.setEmotion(
-        'idle',
-        `Compêndio Doutrinário: Tema ${topic.number} — ${topic.title}.`,
-        'Sala de Leitura com fundamentação dogmática densa e enunciados vinculantes.',
-        5000
-      );
+      if (topic) {
+        minervaPet.setEmotion(
+          'idle',
+          `Compêndio Doutrinário: Tema ${topic.number} — ${topic.title}.`,
+          'Sala de Leitura com fundamentação dogmática densa e enunciados vinculantes.',
+          5000
+        );
+      }
     } else if (view === 'atlas') {
       minervaPet.setEmotion(
         'idle',

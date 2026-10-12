@@ -3,6 +3,7 @@ import { PRACTICE_CASES_DATA } from '../data/practice-cases';
 import { LEGAL_CONCEPTS_DATA } from '../data/legal-concepts';
 import { stateManager } from './state-manager';
 import { minervaPet } from './minerva-pet';
+import { fetchCasos } from '../utils/api';
 import {
   renderIcon,
   ClipboardList,
@@ -16,6 +17,7 @@ import {
 
 export class SimulatorEngine {
   private containerEl: HTMLElement | null = null;
+  private cases: PracticalCase[] = PRACTICE_CASES_DATA;
   private activeCaseIndex: number = 0;
   private selectedDecisionId: string | null = null;
   private selectedConceptIds: string[] = [];
@@ -29,14 +31,28 @@ export class SimulatorEngine {
     this.containerEl = container;
     this.onSwitchToAtlasCallback = onSwitchToAtlas || null;
     this.render();
+    this.loadCases();
+  }
+
+  public async loadCases(): Promise<void> {
+    try {
+      const data = await fetchCasos();
+      if (Array.isArray(data) && data.length > 0) {
+        this.cases = data;
+        stateManager.setCases(data);
+        this.render();
+      }
+    } catch (err) {
+      console.warn('[SimulatorEngine] Operando com base inicial enquanto API inicializa:', err);
+    }
   }
 
   public getActiveCase(): PracticalCase {
-    return PRACTICE_CASES_DATA[this.activeCaseIndex] || PRACTICE_CASES_DATA[0];
+    return this.cases[this.activeCaseIndex] || this.cases[0];
   }
 
   public setActiveCaseById(caseId: string): void {
-    const idx = PRACTICE_CASES_DATA.findIndex(c => c.id === caseId);
+    const idx = this.cases.findIndex(c => c.id === caseId);
     if (idx >= 0) {
       this.activeCaseIndex = idx;
       this.selectedDecisionId = null;
@@ -90,10 +106,10 @@ export class SimulatorEngine {
               ${renderIcon(ClipboardList, { className: 'w-4 h-4 text-blue-900' })}
               <span>Processos do Eixo</span>
             </h3>
-            <span class="text-xs font-mono text-slate-400">${PRACTICE_CASES_DATA.length} casos</span>
+            <span class="text-xs font-mono text-slate-400">${this.cases.length} casos</span>
           </div>
           <div class="simulator-cases-list flex-1 overflow-y-auto">
-            ${PRACTICE_CASES_DATA.map((c, idx) => {
+            ${this.cases.map((c, idx) => {
               const res = state.resolutions.find(r => r.caseId === c.id);
               let statusClass = '';
               if (res) statusClass = res.success ? 'resolved-success' : 'resolved-failure';
