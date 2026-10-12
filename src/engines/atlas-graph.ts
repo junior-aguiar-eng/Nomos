@@ -1,6 +1,7 @@
 import { LegalConcept } from '../types/nomos';
 import { LEGAL_CONCEPTS_DATA } from '../data/legal-concepts';
 import { stateManager } from './state-manager';
+import { renderIcon, X, Bookmark } from '../utils/icons';
 
 interface NodeCoordinate {
   x: number;
@@ -63,7 +64,7 @@ export class AtlasGraphEngine {
                 <span class="drawer-category-badge" id="drawer-category-badge">INSTITUTO</span>
                 <h2 class="drawer-title" id="drawer-title">Título do Conceito</h2>
               </div>
-              <button class="drawer-close-btn" id="drawer-close-btn" title="Fechar">✕</button>
+              <button class="drawer-close-btn p-1.5 rounded-md hover:bg-slate-100 text-slate-500 hover:text-slate-800 transition-colors" id="drawer-close-btn" title="Fechar">${renderIcon(X, { className: 'w-4 h-4' })}</button>
             </div>
             <div class="drawer-body" id="drawer-body">
               <!-- Conteúdo dinâmico injetado -->
@@ -203,8 +204,8 @@ export class AtlasGraphEngine {
       nodeEl.innerHTML = `
         <div class="blueprint-card-header">
           <span class="blueprint-category-tag">${concept.category}</span>
-          <button class="blueprint-bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" data-id="${concept.id}" title="Marcar para estudo">
-            ${isBookmarked ? '★' : '☆'}
+          <button class="blueprint-bookmark-btn ${isBookmarked ? 'bookmarked text-amber-600' : 'text-slate-400 hover:text-slate-600'}" data-id="${concept.id}" title="Marcar para estudo">
+            ${renderIcon(Bookmark, { className: 'w-3.5 h-3.5' })}
           </button>
         </div>
         <div class="blueprint-node-title">${concept.title}</div>

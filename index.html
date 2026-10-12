@@ -23,57 +23,99 @@
   <body>
     <div id="app">
       <!-- HEADER INSTITUCIONAL SÓBRIO (SAAS TOPBAR) -->
-      <header class="nomos-header">
+      <header
+        class="nomos-header h-14 border-b border-slate-200/80 bg-white px-6 flex items-center justify-between"
+      >
         <!-- 1. ESQUERDA: LOGÓTIPO & SELETOR DE CONTEXTO SECUNDÁRIO -->
-        <div class="header-left-zone">
-          <div class="brand-section">
-            <div class="brand-logo-seal">Ν</div>
-            <div class="brand-info">
-              <div class="brand-title">NOMOS <span class="brand-badge">STUDIO</span></div>
+        <div class="header-left-zone flex items-center gap-4">
+          <div class="brand-section flex items-center gap-2.5">
+            <div
+              class="brand-logo-seal w-7 h-7 rounded bg-blue-900 text-white font-bold flex items-center justify-center text-sm tracking-tight"
+            >
+              Ν
+            </div>
+            <div class="brand-info flex items-center">
+              <div
+                class="brand-title font-sans text-base font-bold text-slate-900 tracking-tight flex items-center gap-1.5"
+              >
+                NOMOS
+                <span
+                  class="brand-badge bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded font-medium"
+                  >STUDIO</span
+                >
+              </div>
             </div>
           </div>
 
-          <!-- Seletor Secundário de Contexto / Disciplina -->
+          <!-- Contexto de Disciplina -->
           <div
-            class="context-discipline-pill"
+            class="context-discipline-pill text-xs px-2.5 py-1 rounded-full border border-slate-200 text-slate-600 hover:border-slate-300 flex items-center gap-1.5 transition-colors cursor-pointer"
             title="Ramo Jurídico em Estudo: Direito Administrativo"
           >
-            <span class="context-discipline-dot"></span>
-            <span class="context-discipline-name">Direito Administrativo</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <span class="font-medium text-slate-700">Direito Administrativo</span>
           </div>
         </div>
 
         <!-- 2. CENTRO: NAVEGAÇÃO DOS MÓDULOS PRINCIPAIS (SEGMENTED CONTROL PILL) -->
-        <nav class="view-nav" aria-label="Módulos Principais">
-          <button class="view-nav-btn active" data-view="compendium" title="Compêndio Doutrinário">
+        <nav
+          class="view-nav inline-flex p-1 bg-slate-100 rounded-lg gap-1"
+          aria-label="Módulos Principais"
+        >
+          <button
+            class="view-nav-btn active px-3.5 py-1.5 text-xs font-semibold rounded-md transition-all bg-white text-slate-900 shadow-xs"
+            data-view="compendium"
+            title="Compêndio Doutrinário"
+          >
             Compêndio
           </button>
-          <button class="view-nav-btn" data-view="atlas" title="Blueprint Sistêmico">
+          <button
+            class="view-nav-btn px-3.5 py-1.5 text-xs font-medium rounded-md transition-all text-slate-600 hover:text-slate-900"
+            data-view="atlas"
+            title="Blueprint Sistêmico"
+          >
             Blueprint
           </button>
-          <button class="view-nav-btn" data-view="simulator" title="Laboratório de Decisões">
+          <button
+            class="view-nav-btn px-3.5 py-1.5 text-xs font-medium rounded-md transition-all text-slate-600 hover:text-slate-900"
+            data-view="simulator"
+            title="Laboratório de Decisões"
+          >
             Laboratório
           </button>
-          <button class="view-nav-btn" data-view="dossier" title="Dossiê de Carreira & Erros">
+          <button
+            class="view-nav-btn px-3.5 py-1.5 text-xs font-medium rounded-md transition-all text-slate-600 hover:text-slate-900"
+            data-view="dossier"
+            title="Dossiê de Carreira & Erros"
+          >
             Dossiê
           </button>
         </nav>
 
         <!-- 3. DIREITA: CARREIRA (XP/RANK) & CONTROLE DE TEMA -->
-        <div class="user-meta-controls">
-          <div class="rank-pill" id="header-rank-pill" title="Patamar funcional do pesquisador">
-            <span class="rank-title" id="header-rank-title">Estagiário de Direito</span>
-            <span class="rank-xp" id="header-rank-xp">0 XP</span>
+        <div class="user-meta-controls flex items-center gap-3">
+          <div
+            class="rank-pill flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full border border-slate-200/60"
+            id="header-rank-pill"
+            title="Patamar funcional do pesquisador"
+          >
+            <span id="header-rank-icon" class="text-slate-600 flex items-center"></span>
+            <span class="rank-title text-xs font-medium text-slate-700" id="header-rank-title"
+              >Estagiário de Direito</span
+            >
+            <span
+              class="rank-xp font-mono text-[11px] font-semibold text-blue-900 bg-white px-2 py-0.5 rounded-full shadow-2xs border border-slate-200/50"
+              id="header-rank-xp"
+              >0 XP</span
+            >
           </div>
 
           <button
-            class="action-icon-btn"
+            class="action-icon-btn w-8 h-8 rounded-full border border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300 flex items-center justify-center transition-colors cursor-pointer"
             id="theme-toggle-btn"
             title="Alternar entre Editorial Light e Deep Dark"
             aria-label="Alternar tema"
-          >
-            🌓
-          </button>
+          ></button>
         </div>
       </header>
 

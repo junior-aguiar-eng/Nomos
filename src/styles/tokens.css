@@ -1,3 +1,14 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-primary: #1e3a8a; /* Azul marinho institucional */
+  --color-brand-secondary: #0d9488;
+  --color-surface-bg: #f8fafc;
+  --color-card-bg: #ffffff;
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-doctrine: 'Merriweather', Georgia, serif;
+}
+
 :root {
   /* =========================================================================
      EDITORIAL JURÍDICO PRESTIGIOSO — DESIGN SYSTEM (ESTILO HARVARD LAW / STRIPE PRESS)
@@ -20,20 +31,20 @@
   --border-hover: #cbd5e1;
   --border-strong: #94a3b8;
 
-  --text-primary: #111827;
-  --text-secondary: #374151;
-  --text-muted: #6b7280;
+  --text-primary: #0f172a; /* slate-900 */
+  --text-secondary: #334155; /* slate-700 */
+  --text-muted: #64748b; /* slate-500 */
   --text-inverse: #ffffff;
 
   /* Cores de Acento Institucional Sóbrio */
   --accent-primary: #1e3a8a; /* Azul Marinho Imperial */
   --accent-primary-hover: #172554;
   --accent-secondary: #334155; /* Slate Corporativo */
-  --accent-success: #065f46; /* Esmeralda Dogmático */
+  --accent-success: #059669; /* Esmeralda Dogmático */
   --accent-success-light: #f0fdf4;
-  --accent-warning: #92400e; /* Âmbar Jurídico */
+  --accent-warning: #d97706; /* Âmbar Jurídico */
   --accent-warning-light: #fffbeb;
-  --accent-danger: #991b1b; /* Carmim Forense */
+  --accent-danger: #dc2626; /* Carmim Forense */
   --accent-danger-light: #fef2f2;
 
   --radius-xs: 2px;
@@ -52,6 +63,14 @@
 
   --transition-fast: 0.12s ease-in-out;
   --transition-normal: 0.2s ease-in-out;
+}
+
+/* Reset de fonte base */
+body {
+  background-color: var(--color-surface-bg);
+  font-family: var(--font-ui);
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
 }
 
 [data-theme='deep-cyber-dark'] {

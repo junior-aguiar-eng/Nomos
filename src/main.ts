@@ -4,6 +4,7 @@ import { atlasGraphEngine } from './engines/atlas-graph';
 import { simulatorEngine } from './engines/simulator-engine';
 import { dossierEngine } from './engines/dossier-engine';
 import { minervaPet } from './engines/minerva-pet';
+import { renderIcon, Moon, Sun, getRankIcon } from './utils/icons';
 
 type AppView = 'compendium' | 'atlas' | 'simulator' | 'dossier';
 
@@ -11,7 +12,7 @@ class NomosApp {
   private currentView: AppView = 'compendium';
 
   public init(): void {
-    console.log('🏛️ Inicializando NOMOS — Studio Jurídico (Padrão Editorial Prestigioso)...');
+    console.log('[NOMOS] Inicializando Studio Jurídico...');
 
     // 1. Aplica tema inicial
     this.applyTheme(stateManager.getState().theme);
@@ -23,8 +24,9 @@ class NomosApp {
     this.setupNavigation();
     this.setupThemeToggle();
     this.setupStateSubscriptions();
+    this.updateHeaderBadges();
 
-    console.log('✨ NOMOS operando com os 4 Pilares Institucionais!');
+    console.log('[NOMOS] Operando com os 4 Pilares Institucionais.');
   }
 
   private applyTheme(theme: 'crystal-light' | 'deep-cyber-dark'): void {
@@ -112,9 +114,17 @@ class NomosApp {
   public switchView(view: AppView): void {
     this.currentView = view;
 
-    // Atualiza botões da barra superior
+    // Atualiza botões da barra superior (Segmented control)
     document.querySelectorAll<HTMLElement>('.view-nav-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.view === view);
+      const isActive = btn.dataset.view === view;
+      btn.classList.toggle('active', isActive);
+      if (isActive) {
+        btn.className =
+          'view-nav-btn active px-3.5 py-1.5 text-xs font-semibold rounded-md transition-all bg-white text-slate-900 shadow-xs';
+      } else {
+        btn.className =
+          'view-nav-btn px-3.5 py-1.5 text-xs font-medium rounded-md transition-all text-slate-600 hover:text-slate-900';
+      }
     });
 
     // Atualiza painéis ativos
@@ -169,15 +179,28 @@ class NomosApp {
     });
   }
 
-  private setupStateSubscriptions(): void {
+  private updateHeaderBadges(): void {
+    const state = stateManager.getState();
     const rankTitleEl = document.getElementById('header-rank-title');
     const rankXpEl = document.getElementById('header-rank-xp');
+    const rankIconEl = document.getElementById('header-rank-icon');
+    const themeBtn = document.getElementById('theme-toggle-btn');
 
+    if (rankTitleEl) rankTitleEl.textContent = state.currentRank;
+    if (rankXpEl) rankXpEl.textContent = `${state.totalXp} XP`;
+    if (rankIconEl)
+      rankIconEl.innerHTML = getRankIcon(state.currentRank, 'w-3.5 h-3.5 text-blue-900');
+    if (themeBtn) {
+      themeBtn.innerHTML = renderIcon(state.theme === 'crystal-light' ? Moon : Sun, {
+        className: 'w-4 h-4 text-slate-600'
+      });
+    }
+  }
+
+  private setupStateSubscriptions(): void {
     stateManager.subscribe(state => {
       this.applyTheme(state.theme);
-
-      if (rankTitleEl) rankTitleEl.textContent = state.currentRank;
-      if (rankXpEl) rankXpEl.textContent = `${state.totalXp} XP`;
+      this.updateHeaderBadges();
     });
   }
 }
