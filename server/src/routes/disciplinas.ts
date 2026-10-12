@@ -1,6 +1,14 @@
 import { FastifyInstance } from 'fastify';
 import { pool } from '../config/db.js';
 
+const DEFAULT_DISCIPLINAS = [
+  { id: 1, slug: 'direito-constitucional', nome: 'Direito Constitucional', icone: 'Shield' },
+  { id: 2, slug: 'direito-administrativo', nome: 'Direito Administrativo', icone: 'Scale' },
+  { id: 3, slug: 'direito-penal', nome: 'Direito Penal', icone: 'Gavel' },
+  { id: 4, slug: 'direito-tributario', nome: 'Direito Tributário', icone: 'Coins' },
+  { id: 5, slug: 'direito-processo-civil', nome: 'Direito Processual Civil', icone: 'FileText' }
+];
+
 export async function registerDisciplinasRoutes(fastify: FastifyInstance): Promise<void> {
   // GET /api/disciplinas - Lista matérias ativas
   fastify.get('/api/disciplinas', async (_request, reply) => {
@@ -10,10 +18,13 @@ export async function registerDisciplinasRoutes(fastify: FastifyInstance): Promi
         FROM disciplinas
         ORDER BY id ASC
       `);
+      if (res.rows.length === 0) {
+        return reply.send(DEFAULT_DISCIPLINAS);
+      }
       return reply.send(res.rows);
     } catch (err) {
-      fastify.log.error(err);
-      return reply.status(500).send({ error: 'Erro ao buscar disciplinas' });
+      fastify.log.warn({ err }, '[API Disciplinas] Fallback para catálogo em memória.');
+      return reply.send(DEFAULT_DISCIPLINAS);
     }
   });
 
@@ -23,9 +34,13 @@ export async function registerDisciplinasRoutes(fastify: FastifyInstance): Promi
     const { q } = request.query as { q?: string };
 
     try {
-      // 1. Obtém o ID da disciplina pelo slug
+      // 1. Obtém o ID da disciplina pelo slug (aceita 'administrativo' ou 'direito-administrativo')
       const discRes = await pool.query(
-        'SELECT id, nome, slug FROM disciplinas WHERE slug = $1',
+        `SELECT id, nome, slug FROM disciplinas 
+         WHERE slug = $1 
+            OR slug = 'direito-' || $1 
+            OR 'direito-' || slug = $1
+         LIMIT 1`,
         [slug]
       );
 
@@ -101,8 +116,8 @@ export async function registerDisciplinasRoutes(fastify: FastifyInstance): Promi
 
       return reply.send(themes);
     } catch (err) {
-      fastify.log.error(err);
-      return reply.status(500).send({ error: 'Erro ao buscar temas da disciplina' });
+      fastify.log.warn({ err }, '[API Disciplinas Temas] Base relacional pendente, retornando lista vazia de temas.');
+      return reply.send([]);
     }
   });
 }

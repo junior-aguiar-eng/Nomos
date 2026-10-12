@@ -278,16 +278,30 @@ export async function runSeed(): Promise<void> {
 
   const client = await pool.connect();
   try {
-    // 2. Garante disciplina de Direito Administrativo
-    console.log('[SEED] Semeando disciplina: direito-administrativo...');
-    const discRes = await client.query(`
-      INSERT INTO disciplinas (slug, nome, icone)
-      VALUES ('direito-administrativo', 'Direito Administrativo', 'Scale')
-      ON CONFLICT (slug) DO UPDATE SET nome = EXCLUDED.nome, icone = EXCLUDED.icone
-      RETURNING id;
-    `);
-    const disciplinaId = discRes.rows[0].id;
-    console.log(`[SEED] Disciplina ID: ${disciplinaId}`);
+    // 2. Garante disciplinas ativas no sistema
+    console.log('[SEED] Semeando catálogo de disciplinas...');
+    const disciplinesToSeed = [
+      { slug: 'direito-constitucional', nome: 'Direito Constitucional', icone: 'Shield' },
+      { slug: 'direito-administrativo', nome: 'Direito Administrativo', icone: 'Scale' },
+      { slug: 'direito-penal', nome: 'Direito Penal', icone: 'Gavel' },
+      { slug: 'direito-tributario', nome: 'Direito Tributário', icone: 'Coins' },
+      { slug: 'direito-processo-civil', nome: 'Direito Processual Civil', icone: 'FileText' }
+    ];
+
+    let disciplinaAdminId = 1;
+    for (const d of disciplinesToSeed) {
+      const res = await client.query(`
+        INSERT INTO disciplinas (slug, nome, icone)
+        VALUES ($1, $2, $3)
+        ON CONFLICT (slug) DO UPDATE SET nome = EXCLUDED.nome, icone = EXCLUDED.icone
+        RETURNING id;
+      `, [d.slug, d.nome, d.icone]);
+      if (d.slug === 'direito-administrativo') {
+        disciplinaAdminId = res.rows[0].id;
+      }
+    }
+    const disciplinaId = disciplinaAdminId;
+    console.log(`[SEED] Disciplina Administrativo ID: ${disciplinaId}`);
 
     // 3. Lê pasta de doutrina
     const doctrineDir = findDoctrineDirectory();

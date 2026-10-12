@@ -1,146 +1,19 @@
 <!doctype html>
-<html lang="pt-BR" data-theme="crystal-light">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NOMOS — Studio Jurídico</title>
-    <meta name="description" content="Compêndio Dogmático, Blueprint Sistêmico e Laboratório de Decisões Jurídicas para Direito Administrativo." />
-    <meta property="og:title" content="NOMOS — Studio Jurídico" />
-    <meta property="og:description" content="Compêndio Dogmático, Blueprint Sistêmico e Laboratório de Decisões Jurídicas para Direito Administrativo." />
+    <title>NOMOS — Studio Jurídico · Pesquisa Neural do Direito</title>
+    <meta name="description" content="NOMOS — Studio Jurídico: Plataforma editorial de pesquisa neural, grafos de conhecimento e dossiês de alta precisão para concursos públicos." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
-
-    <link rel="stylesheet" href="/src/styles/tokens.css" />
-    <link rel="stylesheet" href="/src/styles/layout.css" />
-    <link rel="stylesheet" href="/src/styles/compendium.css" />
-    <link rel="stylesheet" href="/src/styles/atlas.css" />
-    <link rel="stylesheet" href="/src/styles/simulator.css" />
-    <link rel="stylesheet" href="/src/styles/dossier.css" />
-    <link rel="stylesheet" href="/src/styles/minerva.css" />
-    <link rel="stylesheet" href="/src/styles/print.css" />
   </head>
   <body>
-    <div id="app">
-      <!-- HEADER INSTITUCIONAL SÓBRIO (SAAS TOPBAR) -->
-      <header
-        class="nomos-header h-14 border-b border-slate-200/80 bg-white px-6 flex items-center justify-between"
-      >
-        <!-- 1. ESQUERDA: LOGÓTIPO & SELETOR DE CONTEXTO SECUNDÁRIO -->
-        <div class="header-left-zone flex items-center gap-4">
-          <div class="brand-section flex items-center gap-2.5">
-            <div
-              class="brand-logo-seal w-7 h-7 rounded bg-blue-900 text-white font-bold flex items-center justify-center text-sm tracking-tight"
-            >
-              Ν
-            </div>
-            <div class="brand-info flex items-center">
-              <div
-                class="brand-title font-sans text-base font-bold text-slate-900 tracking-tight flex items-center gap-1.5"
-              >
-                NOMOS
-                <span
-                  class="brand-badge bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded font-medium"
-                  >STUDIO</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Contexto de Disciplina -->
-          <div
-            class="context-discipline-pill text-xs px-2.5 py-1 rounded-full border border-slate-200 text-slate-600 hover:border-slate-300 flex items-center gap-1.5 transition-colors cursor-pointer"
-            title="Ramo Jurídico em Estudo: Direito Administrativo"
-          >
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span class="font-medium text-slate-700">Direito Administrativo</span>
-          </div>
-        </div>
-
-        <!-- 2. CENTRO: NAVEGAÇÃO DOS MÓDULOS PRINCIPAIS (SEGMENTED CONTROL PILL) -->
-        <nav
-          class="view-nav inline-flex p-1 bg-slate-100 rounded-lg gap-1"
-          aria-label="Módulos Principais"
-        >
-          <button
-            class="view-nav-btn active px-3.5 py-1.5 text-xs font-semibold rounded-md transition-all bg-white text-slate-900 shadow-xs"
-            data-view="compendium"
-            title="Compêndio Doutrinário"
-          >
-            Compêndio
-          </button>
-          <button
-            class="view-nav-btn px-3.5 py-1.5 text-xs font-medium rounded-md transition-all text-slate-600 hover:text-slate-900"
-            data-view="atlas"
-            title="Blueprint Sistêmico"
-          >
-            Blueprint
-          </button>
-          <button
-            class="view-nav-btn px-3.5 py-1.5 text-xs font-medium rounded-md transition-all text-slate-600 hover:text-slate-900"
-            data-view="simulator"
-            title="Laboratório de Decisões"
-          >
-            Laboratório
-          </button>
-          <button
-            class="view-nav-btn px-3.5 py-1.5 text-xs font-medium rounded-md transition-all text-slate-600 hover:text-slate-900"
-            data-view="dossier"
-            title="Dossiê de Carreira & Erros"
-          >
-            Dossiê
-          </button>
-        </nav>
-
-        <!-- 3. DIREITA: CARREIRA (XP/RANK) & CONTROLE DE TEMA -->
-        <div class="user-meta-controls flex items-center gap-3">
-          <div
-            class="rank-pill flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full border border-slate-200/60"
-            id="header-rank-pill"
-            title="Patamar funcional do pesquisador"
-          >
-            <span id="header-rank-icon" class="text-slate-600 flex items-center"></span>
-            <span class="rank-title text-xs font-medium text-slate-700" id="header-rank-title"
-              >Estagiário de Direito</span
-            >
-            <span
-              class="rank-xp font-mono text-[11px] font-semibold text-blue-900 bg-white px-2 py-0.5 rounded-full shadow-2xs border border-slate-200/50"
-              id="header-rank-xp"
-              >0 XP</span
-            >
-          </div>
-
-          <button
-            class="action-icon-btn w-8 h-8 rounded-full border border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300 flex items-center justify-center transition-colors cursor-pointer"
-            id="theme-toggle-btn"
-            title="Alternar entre Editorial Light e Deep Dark"
-            aria-label="Alternar tema"
-          ></button>
-        </div>
-      </header>
-
-      <!-- PALCO CENTRAL DA APLICAÇÃO -->
-      <main class="nomos-main-stage">
-        <!-- PILAR 1: COMPÊNDIO DOUTRINÁRIO (SALA DE LEITURA DENSA) -->
-        <section class="view-pane active" id="compendium-view-pane"></section>
-
-        <!-- PILAR 2: BLUEPRINT SISTÊMICO (DIAGRAMA ORTOGONAL EM RAIAS) -->
-        <section class="view-pane" id="atlas-view-pane"></section>
-
-        <!-- PILAR 3: LABORATÓRIO DE DECISÕES (CASOS CONCRETOS) -->
-        <section class="view-pane" id="simulator-view-pane"></section>
-
-        <!-- PILAR 4: DOSSIÊ DE CARREIRA E CADERNO DE ERROS -->
-        <section class="view-pane" id="dossier-view-pane"></section>
-      </main>
-
-      <!-- EMBLEMA INSTITUCIONAL MINERVA -->
-      <div id="minerva-host"></div>
-    </div>
-
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

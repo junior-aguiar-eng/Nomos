@@ -64,7 +64,45 @@ export async function initSchema(): Promise<void> {
       CREATE INDEX IF NOT EXISTS idx_casos_disciplina_id ON casos_praticos(disciplina_id);
     `);
 
-    console.log('[DB] Schema inicializado com sucesso.');
+    // TABELAS DE GRAFOS DE CONHECIMENTO (GRAPHRAG)
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS knowledge_nodes (
+        id VARCHAR(100) PRIMARY KEY,
+        disciplina_slug VARCHAR(100) NOT NULL,
+        theme_slug VARCHAR(100),
+        label VARCHAR(255) NOT NULL,
+        category VARCHAR(50) NOT NULL,
+        summary TEXT NOT NULL,
+        criteria JSONB DEFAULT '[]'::jsonb,
+        pitfalls JSONB DEFAULT '{}'::jsonb,
+        court_theses JSONB DEFAULT '[]'::jsonb,
+        timeline JSONB DEFAULT '[]'::jsonb,
+        statute_badges JSONB DEFAULT '[]'::jsonb,
+        related_case_id VARCHAR(100),
+        embedding JSONB,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+      );
+
+      CREATE INDEX IF NOT EXISTS idx_knowledge_nodes_disciplina ON knowledge_nodes(disciplina_slug);
+      CREATE INDEX IF NOT EXISTS idx_knowledge_nodes_theme ON knowledge_nodes(theme_slug);
+      CREATE INDEX IF NOT EXISTS idx_knowledge_nodes_category ON knowledge_nodes(category);
+
+      CREATE TABLE IF NOT EXISTS knowledge_edges (
+        id SERIAL PRIMARY KEY,
+        source_id VARCHAR(100) NOT NULL REFERENCES knowledge_nodes(id) ON DELETE CASCADE,
+        target_id VARCHAR(100) NOT NULL REFERENCES knowledge_nodes(id) ON DELETE CASCADE,
+        relation_type VARCHAR(50) NOT NULL,
+        weight FLOAT DEFAULT 1.0,
+        description TEXT,
+        CONSTRAINT unq_knowledge_edge UNIQUE (source_id, target_id, relation_type)
+      );
+
+      CREATE INDEX IF NOT EXISTS idx_knowledge_edges_source ON knowledge_edges(source_id);
+      CREATE INDEX IF NOT EXISTS idx_knowledge_edges_target ON knowledge_edges(target_id);
+      CREATE INDEX IF NOT EXISTS idx_knowledge_edges_rel ON knowledge_edges(relation_type);
+    `);
+
+    console.log('[DB] Schema inicializado com sucesso, incluindo Knowledge Graph.');
   } finally {
     client.release();
   }

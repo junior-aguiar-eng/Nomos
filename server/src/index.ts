@@ -6,7 +6,9 @@ import { initSchema } from './schema.js';
 import { registerDisciplinasRoutes } from './routes/disciplinas.js';
 import { registerTemasRoutes } from './routes/temas.js';
 import { registerCasosRoutes } from './routes/casos.js';
+import { registerNeuralRoutes } from './routes/neural.js';
 import { runSeed } from './services/seed-service.js';
+import { GraphService } from './services/graph-service.js';
 import { pool } from './config/db.js';
 
 dotenv.config();
@@ -34,11 +36,16 @@ async function startServer() {
     await registerDisciplinasRoutes(fastify);
     await registerTemasRoutes(fastify);
     await registerCasosRoutes(fastify);
+    await registerNeuralRoutes(fastify);
 
     // 4. Conecta ao PostgreSQL e inicializa schema
     const isConnected = await testConnection();
     if (isConnected) {
       await initSchema();
+
+      // Semeia o Knowledge Graph (nós e arestas de alta precisão para concursos)
+      const graphService = new GraphService(pool);
+      await graphService.seedKnowledgeGraph();
 
       // Verifica se o banco já possui temas; se vazio, executa seed inicial automaticamente
       const countRes = await pool.query('SELECT COUNT(*) FROM temas');

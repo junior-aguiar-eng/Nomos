@@ -5,9 +5,15 @@ export default defineConfig({
   plugins: [tailwindcss()],
   server: {
     host: '0.0.0.0',
-    port: 3000,
+    port: 5173,
     allowedHosts: true,
-    open: false
+    open: false,
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3001',
+        changeOrigin: true
+      }
+    }
   },
   build: {
     target: 'esnext'

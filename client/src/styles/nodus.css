@@ -1,0 +1,787 @@
+/* ==========================================================================
+   NOMOS — STUDIO JURÍDICO
+   Linguagem Visual Editorial em Papel Claro Luminoso & Pesquisa Neural
+   ========================================================================== */
+
+:root {
+  /* Fundo em papel claro e luminoso (mais arejado e cristalino) */
+  --bg-papel: #FAF8F5;
+  --bg-papel-claro: #FFFFFF;
+  --bg-papel-escuro: #F3EFE6;
+  --bg-radial: radial-gradient(75% 80% at 50% 45%, #FFFFFF 0%, #FAF8F5 55%, #F0EAE0 100%);
+  --bg-radial-focus: radial-gradient(70% 75% at 50% 50%, #FFFFFF 0%, #FAF8F5 55%, #F0EAE0 100%);
+  --bg-radial-immersion: radial-gradient(80% 50% at 60% 0%, #FFFFFF 0%, #FAF8F5 55%, #F0EAE0 100%);
+
+  /* Cores nobres institucionais harmonizadas em tom mais claro */
+  --color-verde-sumo: #1A4333;
+  --color-verde-escuro: #12372A;
+  --color-verde-no: #24654A;
+  --color-verde-texto: #2E4A3D;
+  --color-verde-sub: #3C5A4C;
+  --color-verde-mono: #4A6A5A;
+  --color-bordo: #732037;
+  --color-bordo-dark: #3F101E;
+  --color-bordo-hover: #8F2A47;
+  --color-dourado: #D1B068;
+  --color-dourado-escuro: #947424;
+  --color-dourado-claro: #E8CF8E;
+
+  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', Menlo, Monaco, monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--bg-papel);
+  color: var(--color-verde-escuro);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   TIPOGRAFIA E HIERARQUIA EDITORIAL
+   ========================================================================== */
+
+.font-serif { font-family: var(--font-serif); }
+.font-sans  { font-family: var(--font-sans); }
+.font-mono  { font-family: var(--font-mono); }
+
+/* ==========================================================================
+   ANIMAÇÕES DE FLUTUAÇÃO ORGÂNICA (DRIFT)
+   ========================================================================== */
+
+.fl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.f1 { animation: drift1 9s ease-in-out infinite; }
+.f2 { animation: drift2 11s ease-in-out infinite; }
+.f3 { animation: drift3 13s ease-in-out infinite; }
+
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(7px, -10px); }
+}
+
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-8px, 8px); }
+}
+
+@keyframes drift3 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(6px, 7px); }
+  66% { transform: translate(-7px, -6px); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: .35; transform: scale(1); }
+  50% { opacity: .85; transform: scale(1.25); }
+}
+
+.halo { animation: breathe 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .f1, .f2, .f3, .halo { animation: none !important; }
+}
+
+/* ==========================================================================
+   NÓS NEURAIS (DISCIPLINA, TEMA, FOCO)
+   ========================================================================== */
+
+.nd, .hub, .sg {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  min-height: 56px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--color-verde-escuro);
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+  transition: opacity .5s, transform .4s cubic-bezier(.2, .8, .2, 1);
+  text-align: center;
+}
+
+.nd .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-verde-no);
+  border: 1px solid var(--color-verde-escuro);
+  box-shadow: 0 4px 12px rgba(23, 75, 53, .22);
+  transition: transform .5s cubic-bezier(.2, .8, .2, 1), background .4s, box-shadow .5s, border-color .4s;
+}
+
+.nd .lb {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  line-height: 1;
+  color: var(--color-verde-escuro);
+  transition: transform .5s cubic-bezier(.2, .8, .2, 1), color .4s;
+  white-space: nowrap;
+}
+
+/* Hover & Focus State */
+.nd:hover .fl, .nd:focus-visible .fl,
+.hub:hover .fl, .hub:focus-visible .fl,
+.sg:hover .fl, .sg:focus-visible .fl {
+  animation-play-state: paused;
+}
+
+.nd:hover .dot, .nd:focus-visible .dot {
+  transform: scale(1.9);
+  background: var(--color-dourado);
+  border-color: var(--color-dourado-escuro);
+  box-shadow: 0 0 0 6px rgba(209, 176, 104, .35), 0 10px 26px rgba(23, 75, 53, .25);
+}
+
+.nd:hover .lb, .nd:focus-visible .lb {
+  transform: scale(1.18);
+  color: var(--color-bordo);
+}
+
+/* Desfocar outros nós ao passar mouse em um nó */
+.stage:has(.nd:hover) .nd:not(:hover),
+.stage:has(.sg:hover) .sg:not(:hover) {
+  opacity: .32;
+}
+.stage:has(.nd:hover) .hub { opacity: .5; }
+.stage:has(.hub:hover) .nd { opacity: .5; }
+
+.nd:focus-visible, .hub:focus-visible, .sg:focus-visible, .step:focus-visible, .back:focus-visible {
+  outline: 2px solid var(--color-bordo);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+/* Nó de Tema */
+.nd.theme-node .dot {
+  width: 14px;
+  height: 14px;
+  background: var(--color-bordo);
+  border: 1px solid var(--color-bordo-dark);
+  box-shadow: 0 4px 12px rgba(115, 32, 55, .25);
+}
+
+.nd.theme-node .lb {
+  font-size: 23px;
+  line-height: 1.05;
+  white-space: normal;
+  max-width: 180px;
+}
+
+/* Nó Ativo / Destacado */
+.nd.on .dot {
+  width: 20px;
+  height: 20px;
+  background: var(--color-dourado);
+  border-color: var(--color-dourado-escuro);
+  box-shadow: 0 0 0 6px rgba(209, 176, 104, .4), 0 4px 12px rgba(23, 75, 53, .25);
+}
+
+.nd.on .lb {
+  color: var(--color-bordo);
+  font-size: 28px;
+}
+
+.nd .cta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--color-bordo);
+  margin-top: -4px;
+}
+
+/* HUB CENTRAL */
+.disc {
+  width: 164px;
+  height: 164px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  background: radial-gradient(circle at 40% 32%, #2A7556 0%, #1A4333 70%);
+  box-shadow: 0 24px 60px rgba(23, 75, 53, .32);
+  transition: transform .6s cubic-bezier(.2, .8, .2, 1), box-shadow .6s;
+}
+
+.hub.large .disc {
+  width: 184px;
+  height: 184px;
+}
+
+.hub:hover .disc, .hub:focus-visible .disc {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 8px rgba(209, 176, 104, .35), 0 28px 70px rgba(23, 75, 53, .4);
+}
+
+/* NÚCLEO CONVERGÊNCIA */
+.core {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 40% 32%, #2A7556 0%, #1A4333 70%);
+  box-shadow: 0 18px 44px rgba(23, 75, 53, .32);
+}
+
+/* RÓTULOS DE CLUSTER */
+.cl {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--color-bordo);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.cl b {
+  color: var(--color-dourado-escuro);
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+/* BOTÃO RETRAIR */
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--color-dourado-escuro);
+  border-radius: 999px;
+  color: var(--color-bordo);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, .7);
+  cursor: pointer;
+  transition: background .3s, transform .2s, border-color .3s;
+}
+.back:hover {
+  background: rgba(209, 176, 104, .25);
+  border-color: var(--color-bordo);
+  transform: translateX(-2px);
+}
+
+/* BOTÕES DE SUGESTÃO */
+.sg .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-bordo);
+  border: 1px solid var(--color-bordo-dark);
+  box-shadow: 0 4px 12px rgba(115, 32, 55, .25);
+  transition: transform .5s cubic-bezier(.2, .8, .2, 1), background .4s, box-shadow .5s;
+}
+
+.sg .lb {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 1.05;
+  color: var(--color-verde-escuro);
+  transition: transform .5s cubic-bezier(.2, .8, .2, 1), color .4s;
+  white-space: nowrap;
+}
+
+.sg:hover .dot {
+  transform: scale(1.8);
+  background: var(--color-dourado);
+  border-color: var(--color-dourado-escuro);
+  box-shadow: 0 0 0 6px rgba(209, 176, 104, .3), 0 10px 26px rgba(23, 75, 53, .25);
+}
+
+.sg:hover .lb {
+  transform: scale(1.15);
+  color: var(--color-bordo);
+}
+
+/* CAMPO DE BUSCA NEURAL */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 680px;
+  box-sizing: border-box;
+  padding: 8px 8px 8px 28px;
+  border: 1px solid var(--color-dourado-escuro);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 18px 48px rgba(23, 75, 53, .12);
+  transition: border-color .3s, box-shadow .3s;
+}
+
+.field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 48px;
+  background: none;
+  border: 0;
+  outline: 0;
+  color: var(--color-verde-escuro);
+  font-family: var(--font-serif);
+  font-size: 30px;
+}
+
+.field input::placeholder {
+  color: #7A9385;
+}
+
+.field:focus-within {
+  border-color: var(--color-bordo);
+  box-shadow: 0 18px 48px rgba(115, 32, 55, .18);
+}
+
+.go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: var(--color-bordo);
+  border: 1px solid var(--color-bordo-dark);
+  color: #FDFCFB;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .3s, transform .2s;
+}
+.go:hover {
+  background: var(--color-bordo-hover);
+  transform: translateX(2px);
+}
+
+/* AUTOCOMPLETE DROPDOWN */
+.search-autocomplete-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-dourado-escuro);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(18, 55, 42, .18);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 100;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.search-autocomplete-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  transition: background .2s;
+}
+.search-autocomplete-item:hover {
+  background: rgba(209, 176, 104, .18);
+}
+
+/* ==========================================================================
+   IMERSÃO (DOSSIÊ DE CONCURSO E RESPOSTA ESTRUTURADA)
+   ========================================================================== */
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  color: var(--color-verde-sub);
+  text-decoration: none;
+  font-size: 15px;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  font-family: inherit;
+  transition: color .3s, transform .2s;
+}
+.step:hover {
+  color: var(--color-dourado-escuro);
+  transform: translateX(2px);
+}
+
+.nb {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  color: var(--color-verde-sub);
+  font-family: var(--font-serif);
+  font-size: 21px;
+  cursor: pointer;
+  transition: color .3s, transform .2s;
+  text-align: left;
+}
+.nb:hover {
+  color: var(--color-dourado-escuro);
+  transform: translateX(4px);
+}
+.nb i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-verde-no);
+  border: 1px solid var(--color-verde-escuro);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.src {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  width: 100%;
+  background: none;
+  border: 0;
+  border-top: 1px solid rgba(18, 55, 42, .15);
+  padding: 12px 0;
+  color: var(--color-verde-escuro);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: background .2s;
+}
+.src:hover {
+  background: rgba(18, 55, 42, .03);
+}
+.src:hover .open {
+  color: var(--color-dourado-escuro);
+}
+
+.open {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--color-verde-mono);
+  white-space: nowrap;
+  transition: color .3s;
+}
+
+/* BOTÃO DE AÇÃO PRÁTICA (SIMULADOR DE CASO) */
+.btn-action-pratica {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 28px;
+  border-radius: 12px;
+  background: var(--color-verde-sumo);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-verde-escuro);
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(23, 75, 53, .25);
+  transition: all .25s ease;
+}
+.btn-action-pratica:hover {
+  background: #235641;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(23, 75, 53, .35);
+}
+
+/* ==========================================================================
+   TOP BAR UNIFICADA DO NOMOS
+   ========================================================================== */
+
+#nodus-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 248, 245, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(148, 116, 36, 0.22);
+  padding: 12px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.nav-mode-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(148, 116, 36, 0.3);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.mode-btn {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 0;
+  background: none;
+  color: var(--color-verde-sub);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.mode-btn.active {
+  background: var(--color-verde-sumo);
+  color: #FFFFFF;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(18, 55, 42, .25);
+}
+
+.mode-btn:not(.active):hover {
+  color: var(--color-bordo);
+  background: rgba(209, 176, 104, 0.18);
+}
+
+/* ==========================================================================
+   MODAL DE LEITURA & GAVETA DO COMPÊNDIO SOB DEMANDA
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 55, 42, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  width: 100%;
+  max-width: 760px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-dourado-escuro);
+  border-radius: 16px;
+  padding: 36px 40px;
+  box-shadow: 0 32px 80px rgba(18, 55, 42, .25);
+  transform: translateY(20px) scale(.98);
+  transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.modal-backdrop.open .modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+/* GAVETA LATERAL DO TRATADO DOUTRINÁRIO */
+.doctrine-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 55, 42, 0.35);
+  backdrop-filter: blur(6px);
+  z-index: 110;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.doctrine-drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.doctrine-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 640px;
+  background: #FAF8F5;
+  border-left: 1px solid rgba(148, 116, 36, 0.35);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.12);
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1);
+}
+.doctrine-drawer.open {
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   LABORATÓRIO DE DECISÕES & AUTOCOMPLETE NEURAL
+   ========================================================================== */
+
+.case-cta-card {
+  box-sizing: border-box;
+  padding: 26px 30px;
+  background: linear-gradient(135deg, rgba(209, 176, 104, 0.14) 0%, rgba(115, 32, 55, 0.09) 100%);
+  border: 1px solid rgba(209, 176, 104, 0.55);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  box-shadow: 0 8px 24px rgba(18, 55, 42, 0.05);
+}
+
+.case-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-verde-sumo);
+  color: #FAF8F5;
+  border: 1px solid var(--color-dourado-escuro);
+  border-radius: 8px;
+  padding: 13px 26px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s cubic-bezier(.2, .8, .2, 1);
+  box-shadow: 0 4px 16px rgba(26, 67, 51, 0.22);
+}
+.case-cta-btn:hover {
+  background: var(--color-bordo);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(115, 32, 55, 0.3);
+}
+
+.autocomplete-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid rgba(148, 116, 36, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(18, 55, 42, 0.15);
+  z-index: 50;
+  overflow: hidden;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.autocomplete-item {
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(18, 55, 42, 0.06);
+  transition: background .15s ease;
+}
+.autocomplete-item:last-child {
+  border-bottom: none;
+}
+.autocomplete-item:hover, .autocomplete-item.active {
+  background: rgba(209, 176, 104, 0.18);
+}
+.autocomplete-item .ac-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--color-verde-escuro);
+}
+.autocomplete-item .ac-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-verde-mono);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE E DISPOSITIVOS MÓVEIS
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  #nodus-navbar {
+    padding: 10px 16px;
+  }
+  .stage {
+    min-height: 550px !important;
+  }
+  .cl {
+    display: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .stage {
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 16px;
+  }
+  .stage .nd, .stage .hub, .stage .sg {
+    position: static !important;
+    transform: none !important;
+  }
+  .stage .hub {
+    grid-column: 1 / -1;
+  }
+  .stage .faint {
+    display: none !important;
+  }
+}

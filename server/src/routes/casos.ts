@@ -1,5 +1,6 @@
 import { FastifyInstance } from 'fastify';
 import { pool } from '../config/db.js';
+import { PRACTICE_CASES_DATA } from '../data/initial-cases.js';
 
 function formatCase(row: any) {
   return {
@@ -47,11 +48,15 @@ export async function registerCasosRoutes(fastify: FastifyInstance): Promise<voi
         ORDER BY id ASC
       `);
 
+      if (res.rows.length === 0) {
+        return reply.send(PRACTICE_CASES_DATA);
+      }
+
       const cases = res.rows.map(formatCase);
       return reply.send(cases);
     } catch (err) {
-      fastify.log.error(err);
-      return reply.status(500).send({ error: 'Erro ao buscar casos práticos' });
+      fastify.log.warn({ err }, '[API Casos] Fallback para catálogo em memória.');
+      return reply.send(PRACTICE_CASES_DATA);
     }
   });
 
@@ -73,13 +78,21 @@ export async function registerCasosRoutes(fastify: FastifyInstance): Promise<voi
       );
 
       if (res.rows.length === 0) {
+        const localCase = PRACTICE_CASES_DATA.find(c => c.id === id);
+        if (localCase) {
+          return reply.send(localCase);
+        }
         return reply.status(404).send({ error: `Caso prático '${id}' não encontrado` });
       }
 
       return reply.send(formatCase(res.rows[0]));
     } catch (err) {
-      fastify.log.error(err);
-      return reply.status(500).send({ error: 'Erro ao buscar caso prático' });
+      fastify.log.warn({ err }, '[API Casos] Fallback para catálogo em memória.');
+      const localCase = PRACTICE_CASES_DATA.find(c => c.id === id);
+      if (localCase) {
+        return reply.send(localCase);
+      }
+      return reply.status(404).send({ error: `Caso prático '${id}' não encontrado` });
     }
   });
 }

@@ -681,5 +681,265 @@ export const PRACTICE_CASES_DATA: PracticalCase[] = [
         }
       }
     ]
+  },
+
+  // ==========================================
+  // CASO DE DIREITO CONSTITUCIONAL
+  // ==========================================
+  {
+    id: 'case-const-1',
+    axisId: 'axis-1',
+    caseNumber: 'ADI 7.420 / STF',
+    title: 'O Quórum Qualificado de Modulação Temporal em ADI',
+    assignedRole: 'Ministro Relator no Supremo Tribunal Federal',
+    institutionalContext: 'Plenário do STF · Julgamento de Ação Direta de Inconstitucionalidade',
+    briefing:
+      'Em julgamento de ADI, o Plenário do STF, por maioria de 7 votos a 4, declarou a inconstitucionalidade material de uma lei estadual tributária que vigorou por dez anos. Diante do impacto fiscal bilionário sobre os serviços essenciais do Estado, o Governador requereu a modulação temporal dos efeitos para que a decisão produza efeitos exclusivamente a partir do trânsito em julgado (ex nunc). Na deliberação específica sobre a modulação, 7 ministros votaram a favor da restrição temporal e 4 ministros votaram contra, defendendo a regra clássica da nulidade retroativa (ex tunc).',
+    legalProblem:
+      'Como Ministro Relator, qual pronunciamento deve ser exarado sobre o acolhimento ou rejeição do pedido de modulação temporal dos efeitos da declaração de inconstitucionalidade?',
+    difficulty: 'Avançado',
+    nightVisionHint:
+      'Atenção estrita ao art. 27 da Lei 9.868/1999: a modulação temporal exige maioria qualificada de dois terços dos membros do STF (8 ministros). Sete votos representam maioria absoluta, mas não atingem o quórum de dois terços.',
+    availableDecisions: [
+      {
+        id: 'dec-const-rejeitar-modulacao',
+        label: 'Rejeitar a Modulação por Inobservância do Quórum de 2/3',
+        actionSummary:
+          'Proclamar a eficácia retroativa plena (ex tunc), pois 7 votos favoráveis não atingem o patamar cogente de 8 votos (dois terços do Plenário).',
+        actionType: 'maintain'
+      },
+      {
+        id: 'dec-const-acolher-maioria-absoluta',
+        label: 'Acolher a Modulação por Existência de Maioria Absoluta',
+        actionSummary:
+          'Deferir a eficácia ex nunc com base nos 7 votos favoráveis, invocando razões de segurança jurídica e interesse social.',
+        actionType: 'convalidate'
+      }
+    ],
+    compatibilityRules: [
+      {
+        decisionId: 'dec-const-rejeitar-modulacao',
+        validConceptIds: [],
+        fatalFlawConceptIds: [],
+        outcome: {
+          success: true,
+          verdictTitle: 'DECISÃO PLENÁRIA EXATA: RIGOR DO QUÓRUM DE 2/3',
+          technicalFeedback:
+            'Pronunciamento impecável! O art. 27 da Lei 9.868/1999 é peremptório ao exigir a maioria de DOIS TERÇOS dos membros do STF (no mínimo 8 votos em composição plena de 11) para qualquer modulação ou restrição temporal dos efeitos da declaração de inconstitucionalidade. Sete votos perfazem apenas a maioria absoluta, inviabilizando a modulação e impondo a regra da eficácia ex tunc.',
+          legalGrounding: 'Art. 27 da Lei 9.868/1999 c/c jurisprudência pacífica do Plenário do STF.',
+          minervaReaction: 'triumph',
+          xpEarned: 200
+        }
+      },
+      {
+        decisionId: 'dec-const-acolher-maioria-absoluta',
+        validConceptIds: [],
+        fatalFlawConceptIds: [],
+        outcome: {
+          success: false,
+          verdictTitle: 'ERRO TÉCNICO VINCULANTE: VIOLAÇÃO DO QUÓRUM QUALIFICADO',
+          technicalFeedback:
+            'Equívoco fatal para bancas de concurso! A declaração de inconstitucionalidade exige maioria absoluta (6 votos, art. 97 da CF), mas a MODULAÇÃO TEMPORAL exige dois terços (8 ministros). Com apenas 7 votos a favor, o pedido de modulação deve ser obrigatoriamente rejeitado.',
+          legalGrounding: 'Art. 27 da Lei 9.868/1999.',
+          minervaReaction: 'nullity_alarm',
+          xpEarned: 25
+        }
+      }
+    ]
+  },
+
+  // ==========================================
+  // CASO DE DIREITO PENAL
+  // ==========================================
+  {
+    id: 'case-penal-1',
+    axisId: 'axis-2',
+    caseNumber: 'PROCESSO CRIME 302/2026',
+    title: 'O Princípio da Insignificância e o Fato Típico',
+    assignedRole: 'Juiz de Direito da Vara Criminal',
+    institutionalContext: 'Vara Criminal da Comarca Central',
+    briefing:
+      'O Ministério Público ofereceu denúncia contra um réu primário, sem antecedentes, pelo furto consumado de 2 metros de cabos de cobre avaliados em R$ 12,00, retirados de um depósito particular desativado. Não houve violência, grave ameaça nem rompimento de obstáculo. O material foi integralmente restituído à vítima sem qualquer prejuízo residual. A Defensoria Pública pugnou pela absolvição sumária com base no princípio da insignificância (atipicidade material da conduta).',
+    legalProblem:
+      'Na condição de Magistrado, qual decisão deve ser prolatada na fase do art. 397 do Código de Processo Penal?',
+    difficulty: 'Intermediário',
+    nightVisionHint:
+      'Analise os 4 vetores cumulativos fixados pelo STF (HC 84.412): mínima ofensividade da conduta, nenhuma periculosidade social da ação, reduzidíssimo grau de reprovabilidade do comportamento e inexpressividade da lesão jurídica provocada. Como não é crime contra a Administração Pública, não incide a Súmula 599 do STJ.',
+    availableDecisions: [
+      {
+        id: 'dec-penal-absolver-sumariamente',
+        label: 'Absolver Sumariamente por Atipicidade Material (Insignificância)',
+        actionSummary:
+          'Reconhecer que o princípio da insignificância exclui a tipicidade material do fato, absolvendo o réu com fulcro no art. 397, III do CPP.',
+        actionType: 'dismiss'
+      },
+      {
+        id: 'dec-penal-condenar-tipicidade-formal',
+        label: 'Rejeitar a Bagatela e Prosseguir com a Ação Penal',
+        actionSummary:
+          'Sustentar que a conduta preenche os elementos formais do furto (art. 155 do CP) e que o desvalor do resultado não afasta a subsunção.',
+        actionType: 'maintain'
+      }
+    ],
+    compatibilityRules: [
+      {
+        decisionId: 'dec-penal-absolver-sumariamente',
+        validConceptIds: [],
+        fatalFlawConceptIds: [],
+        outcome: {
+          success: true,
+          verdictTitle: 'SENTENÇA MODELAR: ATIPICIDADE MATERIAL RECONHECIDA',
+          technicalFeedback:
+            'Aplicação dogmática irretocável! O princípio da insignificância atua como causa supralegal de exclusão da TIPICIDADE MATERIAL. Presentes todos os vetores do STF e sem incidência de vedações específicas (como crimes funcionais ou com violência), o fato é penalmente irrelevante e impõe a absolvição sumária com base no art. 397, III do CPP.',
+          legalGrounding: 'HC 84.412/STF c/c art. 397, III do Código de Processo Penal.',
+          minervaReaction: 'triumph',
+          xpEarned: 180
+        }
+      },
+      {
+        decisionId: 'dec-penal-condenar-tipicidade-formal',
+        validConceptIds: [],
+        fatalFlawConceptIds: [],
+        outcome: {
+          success: false,
+          verdictTitle: 'DECISÃO CONTRÁRIA À JURISPRUDÊNCIA PACÍFICA',
+          technicalFeedback:
+            'O Direito Penal é orientado pelo princípio da intervenção mínima e da fragmentariedade. A mera tipicidade formal desprovida de lesividade social intolerável não autoriza a intervenção punitiva estatal.',
+          legalGrounding: 'Precedentes consolidados do STF e STJ sobre atipicidade material.',
+          minervaReaction: 'warning',
+          xpEarned: 30
+        }
+      }
+    ]
+  },
+
+  // ==========================================
+  // CASO DE DIREITO TRIBUTÁRIO
+  // ==========================================
+  {
+    id: 'case-trib-1',
+    axisId: 'axis-1',
+    caseNumber: 'MANDADO DE SEGURANÇA 105/2026',
+    title: 'Majoração de Tributo e o Princípio da Anterioridade Nonagesimal',
+    assignedRole: 'Juiz de Direito da Vara da Fazenda Pública',
+    institutionalContext: 'Vara da Fazenda Pública Estadual',
+    briefing:
+      'Uma lei estadual publicada em 28 de dezembro de 2025 majorou a alíquota de ICMS sobre combustíveis com previsão de produção de efeitos já a partir de 1º de janeiro de 2026. Uma distribuidora impetrou Mandado de Segurança com pedido liminar sustentando que a cobrança imediata viola frontalmente o princípio da anterioridade nonagesimal (noventena), que impõe a observância do prazo mínimo de 90 dias a contar da publicação da lei.',
+    legalProblem:
+      'Como Juiz de Direito, qual pronunciamento judicial deve ser adotado sobre o pedido liminar em face da exigibilidade do tributo majorado?',
+    difficulty: 'Intermediário',
+    nightVisionHint:
+      'O art. 150, III, c da CF/88 exige que a cobrança de tributo majorado aguarde o transcurso de noventa dias da publicação da lei que o aumentou (anterioridade nonagesimal), aplicável ao ICMS comum.',
+    availableDecisions: [
+      {
+        id: 'dec-trib-conceder-liminar',
+        label: 'Deferir a Liminar para Suspender a Exigibilidade até Transcorrer a Noventena',
+        actionSummary:
+          'Determinar a suspensão da exigibilidade da majoração até que se completem 90 dias da publicação oficial da lei.',
+        actionType: 'suspend'
+      },
+      {
+        id: 'dec-trib-indeferir-liminar',
+        label: 'Indeferir a Liminar sob o Fundamento da Anterioridade Anual Cumprida',
+        actionSummary:
+          'Autorizar a cobrança a partir de 1º de janeiro por se tratar de novo exercício financeiro.',
+        actionType: 'maintain'
+      }
+    ],
+    compatibilityRules: [
+      {
+        decisionId: 'dec-trib-conceder-liminar',
+        validConceptIds: [],
+        fatalFlawConceptIds: [],
+        outcome: {
+          success: true,
+          verdictTitle: 'DECISÃO IRRETOCÁVEL: CUMPRIMENTO COGENTE DA NOVENTENA',
+          technicalFeedback:
+            'Excelente decisão! As anterioridades anual (art. 150, III, b) e nonagesimal (art. 150, III, c) são garantias fundamentais do contribuinte de aplicação cumulativa. A virada do exercício financeiro em 1º de janeiro não dispensa o prazo mínimo de 90 dias da publicação da lei ocorrida no fim de dezembro.',
+          legalGrounding: 'Art. 150, III, b e c da Constituição Federal de 1988.',
+          minervaReaction: 'triumph',
+          xpEarned: 180
+        }
+      },
+      {
+        decisionId: 'dec-trib-indeferir-liminar',
+        validConceptIds: [],
+        fatalFlawConceptIds: [],
+        outcome: {
+          success: false,
+          verdictTitle: 'ERRO CRASSO: DESCONSIDERAÇÃO DA ANTERIORIDADE NONAGESIMAL',
+          technicalFeedback:
+            'A Emenda Constitucional 42/2003 consagrou a noventena como garantia expressa contra a prática predatória de aprovar aumentos de tributos nos últimos dias do ano para cobrança imediata em janeiro.',
+          legalGrounding: 'Art. 150, III, c da CF/88.',
+          minervaReaction: 'nullity_alarm',
+          xpEarned: 20
+        }
+      }
+    ]
+  },
+
+  // ==========================================
+  // CASO DE PROCESSO CIVIL
+  // ==========================================
+  {
+    id: 'case-proc-1',
+    axisId: 'axis-1',
+    caseNumber: 'AÇÃO DE COBRANÇA 2088/2026',
+    title: 'Tutela Provisória de Evidência e Tese Vinculante Firmada',
+    assignedRole: 'Juiz de Direito da Vara Cível',
+    institutionalContext: 'Vara Cível da Comarca da Capital',
+    briefing:
+      'O autor formulou pedido de tutela provisória de evidência instruindo a petição inicial com prova puramente documental irrefutável e comprovando que a matéria controvertida foi pacificada pelo Superior Tribunal de Justiça em julgamento de recurso especial repetitivo com tese vinculante idêntica. Não há perigo de dano imediato irreparável, mas o autor requer a concessão inaudita altera parte da tutela de evidência com base no art. 311, II do CPC.',
+    legalProblem:
+      'Como Magistrado Cível, qual decisão deve ser prolatada sobre o cabimento da tutela de evidência liminar?',
+    difficulty: 'Intermediário',
+    nightVisionHint:
+      'O art. 311, II do CPC exige prova documental e tese firmada em julgamento de repetitivo ou súmula vinculante, e o parágrafo único autoriza expressamente a concessão liminar nessa hipótese específica, prescindindo de demonstração de perigo de dano.',
+    availableDecisions: [
+      {
+        id: 'dec-proc-conceder-evidencia-liminar',
+        label: 'Deferir a Tutela de Evidência Liminarmente (art. 311, II e parágrafo único)',
+        actionSummary:
+          'Conceder a tutela provisória de evidência sem ouvir previamente o réu, pois preenchidos os requisitos da prova documental e do repetitivo.',
+        actionType: 'convalidate'
+      },
+      {
+        id: 'dec-proc-indeferir-por-falta-perigo',
+        label: 'Indeferir por Ausência de Demonstração de Perigo de Dano (Periculum in Mora)',
+        actionSummary:
+          'Rejeitar a medida sob o fundamento de que qualquer tutela provisória necessita de risco de dano imediato.',
+        actionType: 'maintain'
+      }
+    ],
+    compatibilityRules: [
+      {
+        decisionId: 'dec-proc-conceder-evidencia-liminar',
+        validConceptIds: [],
+        fatalFlawConceptIds: [],
+        outcome: {
+          success: true,
+          verdictTitle: 'DECISÃO IMPECÁVEL: DISPENSA DE PERIGO DE DANO NA EVIDÊNCIA',
+          technicalFeedback:
+            'Aplicação técnica precisa do CPC/2015! A tutela de evidência é a única modalidade de tutela provisória que independe da demonstração de perigo de dano ou de risco ao resultado útil do processo (art. 311, caput). Ademais, a hipótese do inciso II (prova documental + repetitivo/súmula) admite expressamente concessão liminar (art. 311, parágrafo único).',
+          legalGrounding: 'Art. 311, II e parágrafo único do Código de Processo Civil de 2015.',
+          minervaReaction: 'triumph',
+          xpEarned: 190
+        }
+      },
+      {
+        decisionId: 'dec-proc-indeferir-por-falta-perigo',
+        validConceptIds: [],
+        fatalFlawConceptIds: [],
+        outcome: {
+          success: false,
+          verdictTitle: 'ERRO TÉCNICO: CONFUSÃO ENTRE TUTELA DE URGÊNCIA E DE EVIDÊNCIA',
+          technicalFeedback:
+            'A principal marca distintiva da tutela de evidência no CPC/2015 é exatamente a sua desvinculação em relação ao periculum in mora. Exigir perigo de dano anula a natureza dogmática da evidência.',
+          legalGrounding: 'Art. 311, caput do CPC/2015.',
+          minervaReaction: 'warning',
+          xpEarned: 25
+        }
+      }
+    ]
   }
 ];
