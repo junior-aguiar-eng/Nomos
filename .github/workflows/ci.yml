@@ -1,0 +1,35 @@
+name: CI - Verificação Contínua Nomos
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate-and-build:
+    name: Validar & Compilar
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar Dependências
+        run: npm ci
+
+      - name: Validação de Formatação (Prettier)
+        run: npm run format:check
+
+      - name: Análise Estática de Código (ESLint 9)
+        run: npm run lint
+
+      - name: Tipagem TypeScript & Build de Produção (Vite)
+        run: npm run build

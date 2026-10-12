@@ -1,7 +1,6 @@
 export type MinervaEmotion = 'idle' | 'scanning' | 'triumph' | 'nullity_alarm' | 'night_vision';
 
 export class MinervaPet {
-  private containerEl: HTMLElement | null = null;
   private avatarEl: HTMLElement | null = null;
   private bubbleEl: HTMLElement | null = null;
   private bubbleTextEl: HTMLElement | null = null;
@@ -73,7 +72,6 @@ export class MinervaPet {
       </div>
     `;
 
-    this.containerEl = document.getElementById('minerva-container');
     this.avatarEl = document.getElementById('minerva-hud-avatar');
     this.bubbleEl = document.getElementById('minerva-bubble');
     this.bubbleTextEl = document.getElementById('minerva-bubble-text');
